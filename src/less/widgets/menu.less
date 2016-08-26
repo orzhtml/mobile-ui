@@ -1,0 +1,154 @@
+@import '../util/animation';
+
+// aside
+.menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: #fff;
+
+    .closed {
+        width: 24px;
+        height: 24px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: 165px 0 0 -12px;
+        background-size: 170px auto;
+        background-repeat: no-repeat;
+        background-image: url(http://s2.51offer.com/51offer/h5/global/2015-09-11/icon.png);
+        background-position: -127px -127px;
+        z-index: 50;
+    }
+
+    .menu-cont {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        margin-top: -160px;
+
+        li {
+            width: 25%;
+            text-align: center;
+            padding: 18px 0;
+            float: left;
+
+            a {
+                display: block;
+
+                i {
+                    width: 42px;
+                    height: 42px;
+                    display: inline-block;
+                    background-image: url(http://s2.51offer.com/51offer/h5/global/2015-09-11/icon.png);
+                    background-repeat: no-repeat;
+                    background-size: 170px auto;
+                }
+
+                span {
+                    display: block;
+                    font-size: 14px;
+                    color: #333;
+                }
+            }
+
+            &:nth-child(1) {
+                i {
+                    background-position: 0 0;
+                }
+            }
+
+            &:nth-child(2) {
+                i {
+                    background-position: -42px 0;
+                }
+            }
+
+            &:nth-child(3) {
+                i {
+                    background-position: -84px 0;
+                }
+            }
+
+            &:nth-child(4) {
+                i {
+                    background:url("http://s2.51offer.com/common/menu/img/2016-07-15/pass.png") no-repeat;
+                    background-size: 42px 42px;
+                }
+            }
+
+            &:nth-child(5) {
+                i {
+                    background-position: -126px 0;
+                }
+            }
+
+            &:nth-child(6) {
+                i {
+                    background-position: 0px -42px;
+                }
+            }
+
+            &:nth-child(7) {
+                i {
+                    background-position: -42px -42px;
+                }
+            }
+
+            &:nth-child(8) {
+                i {
+                    background-position: -84px -42px;
+                }
+            }
+
+            &:nth-child(9) {
+                i {
+                    background-position: -126px -42px;
+                }
+            }
+
+            &:nth-child(10) {
+                i {
+                    background-position: 0px -84px;
+                }
+            }
+
+            &:nth-child(11) {
+                i {
+                    background-position: -42px -84px;
+                }
+            }
+
+            &:nth-child(12) {
+                i {
+                    background-position: -84px -84px;
+                }
+            }
+
+            &:nth-child(13) {
+                i {
+                    background-position: -126px -84px;
+                }
+            }
+        }
+
+    }
+
+    &.menuin {
+        display: block;
+        animation: menuin 300ms forwards;
+        transform-origin: 50% 50%;
+    }
+
+    &.menuout {
+        display: block;
+        animation: menuout 300ms ease forwards;
+        transform-origin: 50% 50%;
+    }
+
+}

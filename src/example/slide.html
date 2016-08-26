@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//orzhtml.com">
+    <meta name="author" content="orzhtml.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link rel="icon" href="http://orzhtml.github.io/img/header.png" type="image/x-icon">
+    <title>Mobile UI</title>
+
+    <link rel="stylesheet" href="../dist/css/mobile-ui.css">
+    <link rel="stylesheet" href="../dist/css/widgets/header.css">
+    <link rel="stylesheet" href="./example.css">
+    
+</head>
+<body ontouchstart>
+    <div class="viewport">
+        <header class="global-header">
+            <a href="javascript:history.go(-1)" class="back"><i class="icon icon-back"></i>返回</a>
+            <h1>Slide UI</h1>
+        </header>
+
+        <!-- container 都属于页面级的内容 -->
+        <main class="l-container">
+            
+           
+            <div class="swiper-container banner1" style="width:100%;margin-top:20px">
+                <div class="swiper-wrapper" style="">
+                    <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/1.jpg" style="width:100%"/></div>
+                    <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/2.jpg" style="width:100%"/></div>
+                    <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/3.jpg" style="width:100%"/></div>
+                    <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/4.jpg" style="width:100%"/></div>
+                    <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/5.jpg" style="width:100%"/></div>
+                </div>
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev" style=""></div>
+                <div class="swiper-button-next" style=""></div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </main>
+        <main class="l-container">
+            <div class="swiper-container swiper-title banner2">
+                <div class="swiper-wrapper" style="">
+                    <div class="swiper-slide">
+                        <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/1.jpg" style="width:100%"/>
+                        <div class="layer"></div>
+                        <div class="text ui-nowrap">新西兰的留学之旅</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/2.jpg" style="width:100%"/>
+                        <div class="layer"></div>
+                        <div class="text ui-nowrap">新西兰的留学之旅——让我学会了微笑和感激</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/3.jpg" style="width:100%"/>
+                        <div class="layer"></div>
+                        <div class="text ui-nowrap">新西兰的留学之旅</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/4.jpg" style="width:100%"/>
+                        <div class="layer"></div>
+                        <div class="text ui-nowrap">新西兰的留学之旅——让我学会了微笑和感激</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/5.jpg" style="width:100%"/>
+                        <div class="layer"></div>
+                        <div class="text ui-nowrap">新西兰的留学之旅</div>
+                    </div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </main>
+        <!-- container 都属于页面级的内容 end -->
+    </div>
+    <script type="text/javascript" src="../dist/js/jquery.1.10.2.js"></script>
+    <script type="text/javascript" src="../dist/js/swiper.jquery.js"></script>
+    <script type="text/javascript">
+        var swiper = new Swiper('.banner1', {
+            pagination: '.banner1 .swiper-pagination',
+            paginationClickable: '.banner1 .swiper-pagination',
+            // nextButton: '.swiper-button-next',
+            // prevButton: '.swiper-button-prev',
+            slidesPerView: 1,
+            paginationClickable: true,
+            spaceBetween: 30,
+            loop: true,
+            onSlideChangeEnd: function(swiper){
+                var arr = [ "中国首届互联网留学行业峰会签到现场",
+                            "嘉宾签到版签字留念并摄影",
+                            "51offer CEO王影演讲",
+                            "圆桌论坛：《新时代，新用户，新挑战》",
+                            "纽卡斯尔大学生物医学学院院长Chris演讲"];
+                var ind = swiper.activeIndex - 1;
+               
+                if(ind === -1) ind = 4;
+                if(ind === 5) ind = 0;
+            }
+        });
+        $('.banner1 .swiper-button-next').click(function(){
+            swiper.slideNext();
+        });
+        $('.banner1 .swiper-button-prev').click(function(){
+            swiper.slidePrev();
+        });
+
+        var swiper_title = new Swiper('.banner2', {
+            pagination: '.banner2 .swiper-pagination',
+            // nextButton: '.swiper-button-next',
+            // prevButton: '.swiper-button-prev',
+            slidesPerView: 1,
+            paginationClickable: true,
+            spaceBetween: 30,
+            loop: true,
+            onSlideChangeEnd: function(swiper){
+                var arr = [ "中国首届互联网留学行业峰会签到现场",
+                            "嘉宾签到版签字留念并摄影",
+                            "51offer CEO王影演讲",
+                            "圆桌论坛：《新时代，新用户，新挑战》",
+                            "纽卡斯尔大学生物医学学院院长Chris演讲"];
+                var ind = swiper.activeIndex - 1;
+               
+                if(ind === -1) ind = 4;
+                if(ind === 5) ind = 0;
+            }
+        });
+
+    </script>
+</body>
+</html>

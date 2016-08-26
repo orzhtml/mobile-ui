@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//orzhtml.com">
+    <meta name="author" content="orzhtml.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link rel="icon" href="http://orzhtml.github.io/img/header.png" type="image/x-icon">
+    <title>Mobile UI</title>
+
+    <link rel="stylesheet" href="../dist/css/mobile-ui.css">
+    <link rel="stylesheet" href="../dist/css/widgets/header.css">
+    <link rel="stylesheet" href="./example.css">
+
+</head>
+<body>
+<div class="viewport">
+    <header class="global-header">
+        <a href="javascript:history.go(-1)" class="back"><i class="icon icon-back"></i>返回</a>
+        <h1>Dialog UI</h1>
+    </header>
+
+    <!-- container 都属于页面级的内容 -->
+    <main class="l-container">
+
+        <div class="example-btn">
+            <p class="demo-desc">弹窗二级联动（例如选地区）</p>
+            <div class="ui-dialog-tab">
+                <ul class="ui-dialog-tab-nav">
+                    <li data-type="select_major">全部专业方向 <i class="icon icon-arrows-up"></i></li>
+                    <li data-type="select_degree">全部学位类型 <i class="icon icon-arrows-down"></i></li>
+                </ul>
+                <div class="ui-dialog-tab-content">
+                    <div class="ui-dialog-tab-item" id="select_major" style="margin-top: 0;max-height: 300px;">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="list-group-bd">工科</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="list-group-bd">经济金融</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="list-group-bd">商科</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ui-dialog-tab-item" id="select_degree" style="margin-top:0px;max-height: 300px;">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="list-group-bd">本科</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="list-group-bd">硕士</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="list-group-bd">博士</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p class="demo-desc">弹窗二级联动（例如选地区）</p>
+            <div class="ui-dialog-tab" style="z-index: 4;">
+                <ul class="ui-dialog-tab-nav">
+                    <li data-type="select_aera">英国 <i class="icon icon-arrows-up"></i></li>
+                    <li data-type="select_major2">专业 <i class="icon icon-arrows-up"></i></li>
+                    <li data-type="select_degree">学位 <i class="icon icon-arrows-down"></i></li>
+                </ul>
+                <div class="ui-dialog-tab-content">
+                    <div class="ui-dialog-tab-item" id="select_aera">
+                        <div class="ui-dialog-tab-left">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">英国</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">英国</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">英国</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">英国</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">英国</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">英国</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="ui-dialog-tab-right">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ui-dialog-tab-item" id="select_major2">
+                        <div class="ui-dialog-tab-left">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">工科</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">工科</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">工科</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">工科</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">工科</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">工科</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="ui-dialog-tab-right">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ui-dialog-tab-item" id="select_degree">
+                        <div class="ui-dialog-tab-left">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">本科</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">硕士</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">博士</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="ui-dialog-tab-right">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="list-group-bd">全部</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="demo-desc" style="text-align: left;">带标题没关闭按钮有确认按钮</p>
+            <button id="example" class="btn">带标题没关闭按钮有确认按钮</button>
+            <p class="demo-desc" style="text-align: left;">没标题有关闭按钮有有确认取消按钮</p>
+            <button id="example2" class="btn">没标题有关闭按钮有有确认取消按钮</button>
+            <p class="demo-desc" style="text-align: left;">提醒弹窗</p>
+            <button id="example3" class="btn">提醒弹窗</button>
+            <p class="demo-desc" style="text-align: left;">默认-居中 什么都没</p>
+            <div id="example4" class="btn" data-dropdown="state-template">
+                默认-居中 什么都没
+                <input type="hidden" id="J_stateText">
+            </div>
+            <script id="state-template" type="text/x-handlebars-template">
+                <div class="ui-select-list">
+                    <a class="J_selData" data-val="44">英国</a>
+                    <a class="J_selData" data-val="61">澳洲</a>
+                    <a class="J_selData" data-val="64">新西兰</a>
+                    <a class="J_selData" data-val="81">日本</a>
+                </div>
+            </script>
+            <p class="demo-desc" style="text-align: left;">有滚动条</p>
+            <button id="example5" class="btn">有滚动条</button>
+            <p class="demo-desc" style="text-align: left;">按钮垂直排列</p>
+            <button id="example6" class="btn">按钮垂直排列</button>
+            <p class="demo-desc" style="text-align: left;">弹窗表单</p>
+            <button id="example7" class="btn">弹窗表单</button>
+            <p class="demo-desc" style="text-align: left;">没有边距</p>
+            <button id="example8" class="btn">没有边距</button>
+
+        </div>
+
+
+    </main>
+    <!-- container 都属于页面级的内容 end -->
+</div>
+
+<script id="template" type="text/x-handlebars-template">
+    <div class="dia-content">
+        <div style="height:200px;">内容部分</div>
+    </div>
+</script>
+
+<script id="template-form" type="text/x-handlebars-template">
+    <div class="ui-form-pure">
+        <div class="ui-form-item-bd">
+            <input type="text" class="form-input" placeholder="不区分大小写">
+        </div>
+        <div class="ui-form-item-ft">
+            <img src="http://account.test.51offer.com/imageServlet?session=register&key=8d8490229317c2812dad138385f9cdca"
+                 alt="">
+        </div>
+
+    </div>
+</script>
+
+<script type="text/javascript" src="../js/jquery.1.10.2.js"></script>
+<script type="text/javascript" src="../js/basic.js"></script>
+<script type="text/javascript" src="../js/dialog.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var tpl = $('#template').html();
+        var tpl_form = $("#template-form").html();
+        $('#example').on('click', function () {
+            $.dialog({
+                "id": 'exampleDialog',
+                "class_name": 'example',
+                "title": '标题',
+                "content": '很抱歉，网页手机版暂不支持学校申请很抱歉，网页手机版暂不支持',
+                "button": ["确认"]
+            });
+        });
+        $('#example2').on('click', function () {
+            $.dialog({
+                "close": true,
+                "id": 'exampleDialog2',
+                "class_name": 'example',
+                "content": tpl,
+                "button": ["确认", "取消"]
+            });
+        });
+        $('#example3').on('click', function () {
+            var dia = $.dialog({
+                "title": "",
+                "close": false,
+                "id": 'exampleDialog3',
+                "class_name": 'example',
+                "content": '验证码已发送,请查看手机短信.',
+                "button": false
+            });
+
+            setTimeout(function () {
+                dia.remove();
+            }, 3000);
+        });
+
+        $('[data-dropdown]').on('click', function () {
+            var $this = $(this);
+            var name = $this.data('dropdown');
+            var tpl = $('#' + name).html();
+            var $input = $this.find('input[type="hidden"]');
+            var input_val = $input.val();
+
+            var dia = $.dialog({
+                "class_name": 'ui-dialog-actions',
+                "content": tpl,
+                "button": false,
+                "speed": 300
+            });
+
+            // 循环赋值高亮
+            dia.find('.J_selData').each(function () {
+                var $self = $(this);
+                if ($self.data('val') == input_val) {
+                    $self.addClass('active');
+                    return false;
+                }
+            });
+
+            // 点击触发选项
+            dia.find('.J_selData').on('click', function () {
+                var $this = $(this);
+                var text = $this.text();
+                var val = $this.attr('data-val');
+                var obj = $('[data-rel="' + val + '"]');
+
+                obj.find('.text').removeClass('placeholder').text(text);
+                obj.find('input').val(val);
+                $this.addClass('active').siblings().removeClass('active');
+                dia.removeClass('show-visible');
+
+                setTimeout(function () {
+                    dia.dialog("hide");
+                }, 300);
+
+            });
+        });
+
+        var example5_html = '<div class="ui-dialog-content">限制最大高度，带滚动条</div>';
+
+        $('#example5').on('click', function () {
+            $.dialog({
+                "close": true,
+                "id": 'exampleDialog5',
+                "class_name": 'ui-dialog-list',
+                "title": '标题',
+                "content": example5_html,
+                "button": []
+            });
+        });
+
+        var window_height = window.screen.height;
+        $(".ui-dialog-tab-nav li").on("click", function () {
+            var $ui_tab = $(this).closest(".ui-dialog-tab");
+            var $ui_tab_content = $ui_tab.find(".ui-dialog-tab-content");
+            console.log($ui_tab);
+            var data_type = $(this).data("type");
+            if ($(this).hasClass("current")) {
+                $(this).removeClass("current");
+                $ui_tab_content.hide();
+                $ui_tab_content.find(".ui-dialog-tab-item").hide();
+                $("body").css("overflow", "auto");
+            } else {
+                $(this).addClass("current").siblings().removeClass("current");
+                $ui_tab_content.show();
+                $ui_tab_content.find(".ui-dialog-tab-item").hide();
+                $ui_tab_content.find(".ui-dialog-tab-item#" + data_type).show();
+                $("body").css("overflow", "hidden");
+            }
+            $ui_tab_content.css("height", window_height - $ui_tab_content.offset().top);
+        });
+        $(".ui-dialog-tab-content").on("click", function (e) {
+            var $target = $(e.target);
+            if ($target.hasClass('list-group-item')) {
+                return;
+            } else {
+                $(this).hide();
+                $(".ui-dialog-tab-nav li.current").removeClass("current");
+                $("body").css("overflow", "auto");
+            }
+        });
+
+        $('#example6').on('click', function () {
+            $.dialog({
+                "close": false,
+                "id": 'exampleDialog6',
+                "class_name": "ui-dialog-vertical",
+                "content": tpl,
+                "button": ["确认", "取消"]
+            });
+        });
+        $('#example7').on('click', function () {
+            $.dialog({
+                "id": 'exampleDialog',
+                "class_name": 'ui-dialog-form', // 必须
+                "title": '请输入验证码',
+                "content": tpl_form,
+                "button": ["确认"]
+            });
+        });
+        $('#example8').on('click', function () {
+            $.dialog({
+                "close": true,
+                "id": 'exampleDialog',
+                "class_name": 'ui-dialog-nopadding', // 必须
+                "title": '请输入验证码',
+                "content": tpl,
+                "button": ["确认"]
+            });
+        });
+
+    })
+</script>
+</body>
+</html>

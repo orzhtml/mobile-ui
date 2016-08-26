@@ -1,0 +1,337 @@
+@import "../base/variable";
+@import "../base/mixin/border.less";
+
+.ui-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    background-color: @mask-background-mid;
+    display: none;
+    z-index: @z-index-dialog + 1;
+
+    &.show {
+        display: -moz-box;
+        display: -webkit-box;
+    }
+
+    .ui-dialog-cnt {
+        border-radius: @dialog-radius;
+        background-clip: padding-box;
+        outline: 0;
+        pointer-events: auto;
+        background-color: @dialog-cnt-background;
+        position: relative;
+        max-width: @dialog-cnt-maxWidth;
+        width: @dialog-cnt-width;
+    }
+
+    .ui-dialog-hd {
+        position: relative;
+        font-size: 0;
+        line-height: 0;
+        text-align: center;
+
+
+
+        .title {
+            color: @color-gray-darker; /*#2594ff*/
+            font-size: @dialog-fontSize;
+            height: @dialog-hd-title-height;
+            line-height: @dialog-hd-title-lineHeight;
+            padding: @dialog-hd-title-padding;
+            &:after {
+                .border-b(@border-color);
+            }
+        }
+
+        .icon-close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: @dialog-hd-title-height; /*是不是一定要正方形？那这俩一样也没什么问题喽,原值俩45*/
+            line-height: @dialog-hd-title-height;
+            text-align: center;
+            width: @dialog-hd-title-height; /*是不是一定要正方形？那这俩一样也没什么问题喽,原值俩45*/
+            color: #28a0f2;
+        }
+    }
+
+    .ui-dialog-bd {
+        min-height: @dialog-bd-minHeight;
+        border-top-left-radius: @dialog-radius;
+        border-top-right-radius: @dialog-radius;
+        padding: @dialog-bd-padding;
+        font-size: @dialog-fontSize;
+        display: -moz-box;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        -webkit-box-orient: vertical;
+
+        h4 {
+            margin-bottom: @dialog-bd-h4-marginBotton;
+            font-size: @dialog-fontSize;
+            width: 100%;
+            text-align: center;
+        }
+
+        .ui-dialog-content {
+            max-height: 308px;
+            overflow: auto;
+        }
+    }
+
+    .ui-dialog-ft {
+        border-bottom-left-radius: @dialog-radius;
+        border-bottom-right-radius: @dialog-radius;
+
+        &.ui-btn-group {
+            display: -moz-box;
+            display: -webkit-box;
+            width: 100%;
+            -webkit-box-align: center;
+        }
+
+        button {
+            background: transparent;
+            position: relative;
+            display: block;
+            -moz-box-flex: 1;
+            -webkit-box-flex: 1;
+            color: @global-title-color;
+            font-size: @dialog-fontSize;
+            height: @dialog-ft-button-height; /*正方*/
+            line-height: @dialog-ft-button-height; /*正方*/
+            text-align: center;
+            width: 100%;
+
+            &:before {
+                .border-t(@border-color);
+            }
+            &:after {
+                .border-r(@border-color);
+            }
+
+            &:active {
+                background: @highlight-color;
+            }
+
+            &:first-child {
+                border-bottom-left-radius: @dialog-radius;
+                background-image: @dialog-ft-button-first-backgroundImage;
+            }
+
+            &:last-child {
+                border-bottom-right-radius: @dialog-radius;
+                border-right: @dialog-ft-button-last-borderRight;
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.ui-dialog-notice {
+    background: transparent;
+
+    .ui-dialog-cnt {
+        width: @dialog-notice-cnt-width;
+        height: @dialog-notice-cnt-height;
+        display: -moz-box;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        text-align: center;
+        background: @dialog-notice-cnt-background;
+        border-radius: @dialog-radius;
+        color: @dialog-notice-cnt-color;
+    }
+}
+
+.ui-dialog-actions {
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: justify;
+    -webkit-box-align: end;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all .2s;
+
+    .ui-dialog-cnt {
+        border-radius: @dialog-actions-cnt-radius;
+        bottom: @dialog-actions-cnt-bottom;
+        max-width: @dialog-actions-cnt-maxWidth;
+        width: 100%;
+        transition: all 300ms;
+        transform: translate3d(0%, 100%, 0%);
+    }
+
+    &.show-visible {
+        background-color: @mask-background-mid;
+        width: 100%;
+
+        .ui-dialog-cnt {
+            transform: translate3d(0%, 0%, 0%);
+        }
+    }
+
+    .ui-dialog-bd {
+        padding: @dialog-actions-bd-padding;
+    }
+
+    .ui-select-list {
+        width: 100%;
+
+        a {
+            background-color: transparent;
+            position: relative;
+            color: @color-black;
+            cursor: pointer;
+            display: block;
+            font-size: @dialog-fontSize - 2;
+            height: @dialog-actions-a-height;
+            line-height: @dialog-actions-a-lineHeight;
+            padding: @dialog-actions-a-padding;
+            text-align: center;
+
+            &:before {
+                .border-b(@border-color);
+            }
+        }
+
+    }
+}
+.ui-dialog-tab {
+    width: 100%;
+    position: relative;
+    z-index: 500;
+}
+.ui-dialog-tab-nav {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    display: box;
+    display: -webkit-box;
+    font-size: 16px;
+    height: 45px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    &:after {
+        .border-b(@border-color);
+    }
+
+
+    li {
+        position: relative;
+        height: 45px;
+        line-height: 45px;
+        min-width: 70px;
+        -webkit-box-flex: 1;
+        text-align: center;
+        color: @color-gray-darker;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        border-bottom: 2px solid transparent;
+        width: 100%;
+
+        &:after {
+            .border-r(@border-color);
+
+        }
+        &:last-child:after {
+            display: none;
+        }
+        .icon {
+            &:before{
+                color: #ccc;
+                content: '\e601';
+            }
+
+        }
+    }
+    .current {
+        color: #28a0f2;
+        .icon {
+            &:before{
+                color: #28a0f2;
+                content: '\e604';
+            }
+
+        }
+    }
+}
+.ui-dialog-tab-content {
+    display: none;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 45px;
+    width: 100%;
+}
+
+.ui-dialog-tab-item {
+    display: -webkit-box;
+    background-color: #fff;
+
+    .list-group {
+        margin-top: 0;
+        &:before {
+            display: none;
+        }
+    }
+}
+.ui-dialog-tab-left {
+    -webkit-box-flex: 1;
+    background-color: #edeef0;
+    height: 220px;
+    overflow: auto;
+
+    ul {
+        background-color: #edeef0;
+        &:before {
+            display: none;
+        }
+        &:after {
+            display: none;
+        }
+
+        li {
+            &:before {
+                display: none;
+            }
+        }
+    }
+}
+.ui-dialog-tab-right {
+    -webkit-box-flex: 3;
+    height: 220px;
+    overflow: auto;
+}
+
+.ui-dialog-vertical {
+    .ui-dialog-ft.ui-btn-group {
+        display: block;
+    }
+}
+
+.ui-dialog.ui-dialog-form {
+    .ui-dialog-bd {
+        padding: 0 18px;
+    }
+    .ui-form-item-ft {
+        position: relative;
+        &:after {
+            .border(6px,#ddd);
+        }
+    }
+}
+.ui-dialog.ui-dialog-nopadding {
+    .ui-dialog-bd {
+        padding: 0;
+    }
+}

@@ -1,0 +1,424 @@
+@import "../base/mixin/border";
+@import "../base/variable";
+@import "../base/icon-font";
+
+.margin-left-20p {
+    margin-left: 20px;
+}
+
+.list-group-title {
+    color: #888;
+    font-size: 14px;
+    margin-top: 11px;
+    margin-bottom: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    & + .list-group {
+        margin-top: 0;
+    }
+}
+
+.list-group {
+    background-color: @list-group-background-color;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    &:before {
+        .border-t(@list-group-border-color);
+    }
+
+    &:after {
+        .border-b(@list-group-border-color);
+    }
+}
+
+.list-group-item {
+    color: inherit;
+    display: block;
+    font-size: @list-group-item-font-size;
+    overflow: hidden;
+    padding: @list-group-item-padding;
+    position: relative;
+
+    &:before {
+        .border-t(@border-color, solid);
+    }
+
+    &:first-child {
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.list-group-hd, .list-group-bd, .list-group-ft {
+    display: table-cell;
+    vertical-align: middle;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: nowrap;
+}
+
+.list-group-bd {
+    width: 100%;
+    white-space: normal;
+    vertical-align: top;
+
+    h4 {
+        font-size: @font-size-h4;
+        line-height: 20px;
+        vertical-align: middle;
+    }
+
+    h5 {
+        font-size: @font-size-h5;
+        line-height: 20px;
+        vertical-align: middle;
+    }
+
+    h6 {
+        font-size: @font-size-h6;
+        line-height: 20px;
+        vertical-align: middle;
+    }
+
+}
+
+.list-group-ft {
+    text-align: right;
+}
+
+.list-group-info {
+    color: #818181;
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 13px;
+}
+
+.list-group-access {
+    .list-group-item {
+        &:active {
+            background-color: @highlight-color;
+            margin: 0;
+            padding: @list-group-item-padding;
+        }
+    }
+
+    .list-group-ft {
+        &:after {
+            content: @icon-arrows-right;
+            color: #e4e4e4;
+            font-family: @icon-font-name;
+            font-size: 20px;
+            line-height: 18px;
+            margin-right: -6px;
+            width: 6px;
+        }
+    }
+}
+
+.media-group {
+    background-color: @list-group-background-color;
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+
+    &:before {
+        .border-t(@list-group-border-color);
+    }
+
+    &:after {
+        .border-b(@list-group-border-color);
+    }
+}
+
+.media-group-item {
+    color: inherit;
+    display: block;
+    font-size: @list-group-item-font-size;
+    overflow: hidden;
+    padding: @list-group-item-padding;
+    position: relative;
+
+    &:active {
+        background-color: @highlight-color;
+        margin: 0;
+        padding: @list-group-item-padding;
+    }
+
+    &:before {
+        .border-t(@border-color, solid);
+    }
+
+    &:first-child {
+        &:before {
+            display: none;
+        }
+    }
+
+    .media-group-bd, .media-group-left, .media-group-right {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .media-group-bd {
+        width: 10000px;
+
+        h4 {
+            font-size: @font-size-h4;
+            line-height: 22px;
+        }
+
+        h5 {
+            font-size: @font-size-h5;
+            line-height: 20px;
+        }
+
+        h6 {
+            font-size: @font-size-h6;
+            line-height: 20px;
+        }
+
+        .intro {
+            font-size:14px;
+            color: @global-minor-color;
+        }
+
+        .minor {
+            color: @global-minor-color;
+            font-size: @font-size-h6;
+            margin-top: 10px;
+
+            div {
+                float: left;
+                margin-right: 10px;
+                margin-top: 5px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+            .article-read {
+                &:before {
+                    height: 10px;
+                    margin-top: -5px;
+                }
+            }
+
+            span {
+                margin-right: 10px;
+                
+                &:last-child {
+                    margin-right:0;
+                }
+            }
+        }
+
+        p {
+            font-size: @font-size-sm;
+            line-height: 20px;
+            vertical-align: middle;
+
+
+        }
+    }
+
+    .media-group-left, .media-group-right {
+        .thumb {
+            display: block;
+            position: relative;
+            width: 100%;
+
+            &:after {
+                .border();
+            }
+        }
+    }
+
+    .media-group-left {
+        padding-right: 12px;
+    }
+
+    .media-group-right {
+        padding-left: 10px;
+    }
+
+    .media-group-info {
+        color: #818181;
+        font-size: 12px;
+        line-height: 18px;
+        margin-top: 13px;
+    }
+}
+
+.apt-media-info {
+    color: @global-minor-color;
+    font-size: @font-size-h6;
+    margin-top: 7.5px;
+
+
+
+    .apt-addr {
+        position: relative;
+        margin-left: 18px;
+
+        &:before {
+            content: ' ';
+            position: absolute;
+            left: -18px;
+            width: 15px;
+            height: 15px;
+            background-image: url(http://s2.51offer.com/51offer/51offer-ui/img/2016-01-27/icon_01.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 15px 15px;
+
+        }
+    }
+
+    .apt-info-ft {
+        font-size: 12px;
+        margin-top: 2px;
+        position: relative;
+
+        .apt-book-state {
+            position: relative;
+            float: left;
+            color: #fd9827;
+            padding-top: 4px;
+            margin-left: 20px;
+            &:before {
+                position: absolute;
+                left: -20px;
+                content: '';
+                width: 14px;
+                height:14px;
+                background-image: url(http://s2.51offer.com/51offer/51offer-ui/img/2016-01-27/icon_02.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 14px 14px;
+            }
+        }
+        .apt-book-full {
+            position: relative;
+            float: left;
+            color: #aaa;
+            padding-top: 4px;
+            margin-left: 20px;
+            &:before {
+                position: absolute;
+                left: -20px;
+                content: '';
+                width: 14px;
+                height:14px;
+                background-image: url(http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/icon_03.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 14px 14px;
+            }
+
+        }
+        .apt-price-state {
+            float: right;
+            margin-left: 10px;
+        }
+
+        .apt-price {
+            font-size: 17px;
+            font-weight: bold;
+            color: #f2511d;
+        }
+    }
+
+    .apt-info-del {
+        .apt-price-state {
+            float: right;
+            margin-left: 10px;
+            text-decoration: line-through;
+        }
+
+        .apt-price {
+            font-size: 17px;
+            font-weight: bold;
+            color: #aaa;
+        }
+    }
+}
+
+.apt-list-info {
+    color: #333;
+    font-size: @font-size-h6;
+    margin-top: 7.5px;
+
+
+    .apt-addr {
+        position: relative;
+        margin-left: 18px;
+
+        &:before {
+            content: ' ';
+            position: absolute;
+            left: -18px;
+            width: 15px;
+            height: 15px;
+            background-image: url(http://s2.51offer.com/51offer/51offer-ui/img/2016-01-27/icon_01.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 15px 15px;
+
+        }
+    }
+
+    .apt-info-ft {
+        font-size: 12px;
+        margin-top: 2px;
+        position: relative;
+
+        .apt-state {
+            color: #aaa;
+            padding: 10px 0;
+        }
+
+        .apt-state-orange {
+            color: #fd9827;
+        }
+        .apt-state-blue {
+            color: #489c48;
+        }
+
+        .apt-price {
+            color: #aaa;
+        }
+
+        .apt-price-num {
+            font-size: 16px;
+            font-weight: bold;
+            color: #f2511d;
+            margin-right: 5px;
+        }
+    }
+
+    .apt-info-del {
+        .apt-price {
+            text-decoration: line-through;
+        }
+
+        .apt-price-num {
+            font-size: 17px;
+            font-weight: bold;
+            color: #aaa;
+        }
+    }
+
+    .list-group-bd {
+        p{
+            padding: 4px 0;
+        }
+        h6 {
+            padding: 5.5px 0;
+        }
+    }
+}

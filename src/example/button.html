@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="//orzhtml.com">
+    <meta name="author" content="orzhtml.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link rel="icon" href="http://orzhtml.github.io/img/header.png" type="image/x-icon">
+    <title>Mobile UI</title>
+
+    <link rel="stylesheet" href="../dist/css/mobile-ui.css">
+    <link rel="stylesheet" href="../dist/css/widgets/header.css">
+    <link rel="stylesheet" href="./example.css">
+
+</head>
+<body ontouchstart>
+    <div class="viewport">
+        <header class="global-header">
+            <a href="javascript:history.go(-1)" class="back"><i class="icon icon-back"></i>返回</a>
+            <h1>Button UI</h1>
+        </header>
+
+        <!-- container 都属于页面级的内容 -->
+        <main class="l-container">
+            <div class="spacing">
+                <div class="bs-example">
+                    <p class="demo-desc">轮廓按钮</p>
+                    <a class="btn">(默认样式) Btn</a>
+                </div>
+                <div class="bs-example">
+                    <p class="demo-desc">蓝色按钮</p>
+                    <a class="btn btn-primary">(首选项) 蓝色 Btn</a>
+                </div>
+                <div class="bs-example">
+                    <p class="demo-desc">橙色按钮</p>
+                    <a class="btn btn-orange">(首选项) 橙色 Btn</a>
+                </div>
+                <div class="bs-example">
+                    <p class="demo-desc">无边 链接 按钮</p>
+                    <a class="btn btn-link">(链接) Btn</a>
+                </div>
+                <div class="bs-example">
+                    <p class="demo-desc">禁用 按钮</p>
+                    <a class="btn btn-disabled btn-block">禁止点击</a>
+                    <a class="btn btn-primary btn-disabled btn-block">禁止点击</a>
+                </div>
+
+                <div class="bs-example">
+                    <p class="demo-desc">按钮大小</p>
+                    <p style="padding: 0 2.5px; margin-bottom: 10px;"><a class="btn-lg btn-primary btn-block">大按钮</a></p>
+                    <p style="margin: 0 2.5px 10px; width: 180px;"><a class="btn btn-primary btn-block">默认尺寸</a></p>
+                    <p style="margin: 0 2.5px; width: 100px;"><a class="btn-sm btn-primary btn-block">小按钮</a></p>
+                </div>
+
+                <div class="bs-example">
+                    <p class="demo-desc">占行按钮</p>
+                    <a class="btn btn-primary btn-block">独占一行</a>
+                </div>
+
+                <div class="bs-example">
+                    <p class="demo-desc">按钮组</p>
+                    <div class="btn-group">
+                        <a class="btn">按钮</a>
+                        <a class="btn">按钮</a>
+                        <a class="btn">按钮</a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        <!-- container 都属于页面级的内容 end -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+@import "../base/mixin/border";
+@import "../base/variable";
+
+.global-footer {
+    background-color: #f8f8f8;
+    color: @color-gray-light;
+    font-size: 14px;
+    padding: 7px 0;
+    text-align: center;
+
+    &:before {
+        .border-t();
+    }
+
+    span {
+    	display: inline-block;
+    	margin-right: 10px;
+    }
+
+    span:last-child {
+    	margin-right: 0;
+    }
+}

@@ -1,0 +1,278 @@
+@import "../base/variable";
+
+.article {
+    background-color: #fff;
+    padding: 26px 15px 72px;
+    position: relative;
+
+    &:before {
+        .border-t();
+    }
+
+    &:after {
+        .border-b();
+    }
+
+    .h1 {
+        font-size: @font-size-h1;
+        margin-bottom: 8px;
+    }
+
+    .minor {
+        color: @global-minor-color;
+        display: block;
+        font-size: 12px;
+
+        span {
+            margin-right: 14px;
+        }
+    }
+
+    .article-hd {
+
+    }
+
+    .article-bd {
+        margin-top: 24px;
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
+            margin-bottom: 10px;
+        }
+    }
+
+    .article-ft {
+        margin-top: 7px;
+    }
+
+    .tag-bar {
+        margin-top: 15px;
+        padding-left: 36px;
+        position: relative;
+
+        &:before {
+            color: @color-gray;
+            content: attr(title);
+            font-size: 12px;
+            height: 25px;
+            line-height: 25px;
+            left: 0;
+            position: absolute;
+            top: 0;
+        }
+
+        &:after {
+            clear: both;
+            content: '';
+            display: table;
+        }
+
+        .tag {
+            float: left;
+            margin-bottom: 5px;
+            margin-right: 10px;
+        }
+    }
+}
+.article-title {
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+.article-read {
+    position: relative;
+    margin-left: 20px;
+
+    &:before {
+        content: '';
+        width: 14px;
+        height: 10px;
+        left: -20px;
+        position: absolute;
+        top: 50%;
+        background-image: url(http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-icon1.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 14px 10px;
+        margin-top: -5px;
+    }
+}
+.article-collect {
+    position: relative;
+    margin-left: 17px;
+
+    &:before {
+        content: '';
+        width: 11.5px;
+        height: 11px;
+        left: -17px;
+        position: absolute;
+        top: 0;
+        background-image: url(http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-icon2.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 11.5px 11px;
+    }
+}
+.article-intro {
+    position: relative;
+    font-size: 15px;
+    color: #999999;
+    padding: 22px 12px;
+    text-indent: 25px;
+    line-height: 25px;
+    text-align: justify;
+    word-break:break-all;
+
+    &:before {
+        content: '';
+        width: 17.5px;
+        height: 14px;
+        left: 13px;
+        position: absolute;
+        top: 26px;
+        background-image: url(http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-icon3.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 17.5px 14px;
+    }
+    &:after {
+        .border(6px,#ddd);
+    }
+}
+.article-bd{
+    .article-content {
+        margin: 30px 0 40px;
+        font-size: 17px;
+
+        img {
+            width: 100%!important;
+            height: auto!important;
+        }
+        em,i {
+            font-style: italic;
+        }
+        figure {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        figcaption {
+            text-align: center;
+            margin-bottom: 24px;
+            margin-top: 10px;
+            color: #999;
+            font-size: 12px;
+            font-style: italic;
+        }
+        h5 {
+            margin-top: 30px;
+            font-size: 17px;
+            color: #3d3d3d;
+            font-weight: bold;
+        }
+        h6 {
+            font-size: 17px;
+            color: #3d3d3d;
+            position: relative;
+            margin: 20px 0 20px 20px;
+
+            &:before {
+                content: ' ';
+                width: 7.5px;
+                height: 20px;
+                position: absolute;
+                left: -17.5px;
+                background-image: url(http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-icon4.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 7.5px 10px;
+            }
+        }
+        a {
+            color: #44acf3;
+        }
+        p {
+            //margin-bottom:40px;
+            //margin-top: 30px;
+            line-height: 26px;
+            color: #3d3d3d;
+            word-break:break-all;
+
+            span {
+                display: block;
+                margin-top: 10px;
+                word-break:break-all;
+
+                &:first-child{
+                    margin-top: 0;
+                }
+            }
+        }
+        div {
+            margin: 20px 0;
+            line-height: 29px;
+            word-break:break-all;
+        }
+        div + figure {
+            margin-top: 40px;
+        }
+
+        ul {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            li {
+                padding: 20px 0 0;
+                list-style: disc;
+                margin-left: 15px;
+                line-height: 29px;
+                word-break:break-all;
+
+                &:first-child {
+                    padding-top: 0px;
+                }
+
+            }
+        }
+        ol {
+
+            li {
+                margin-top: 10px;
+                list-style-type: decimal;
+                margin-left: 20px;
+                line-height: 29px;
+                word-break:break-all;
+            }
+        }
+        blockquote {
+            font-size:15px;
+            color: #999;
+            padding: 12px 10px;
+            position: relative;
+            text-indent: 23px;
+            line-height: 25px;
+            text-align: justify;
+            word-break:break-all;
+
+            &:before {
+                content: '';
+                width: 17.5px;
+                height: 14px;
+                left: 10px;
+                position: absolute;
+                top: 15px;
+                background-image: url(http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-icon3.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 17.5px 14px;
+            }
+            &:after {
+                .border-l(#ddd);
+            }
+        }
+    }
+}
+
+
+

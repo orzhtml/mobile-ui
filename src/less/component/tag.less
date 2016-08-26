@@ -1,0 +1,89 @@
+@import "../base/variable";
+
+.tag, .tag-lg, .tag-sm {
+    background-color: @tag-background-color;
+    border-radius: @tag-border-radius;
+    color: @tag-color;
+    display: inline-block;
+    font-size: @tag-font-size;
+    height: @tag-height;
+    line-height: @tag-height;
+    overflow: hidden;
+    padding: @tag-padding;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+
+    &.active, &:active {
+        border-color: @tag-active-color;
+        color: @tag-active-color;
+    }
+
+    &:after {
+        .border(@tag-border-radius, @tag-border-color);
+    }
+
+    &.tag-block {
+        display: block;
+    }
+}
+
+&.tag-lg {
+    height: @tag-lg-height;
+    line-height: @tag-lg-height;
+    min-width: @tag-lg-min-width;
+}
+
+&.tag-sm {
+    border-radius: @tag-sm-border-radius;
+    font-size: @tag-sm-font-size;
+    height: @tag-sm-height;
+    line-height: @tag-sm-height;
+
+    &:after {
+        .border(@tag-sm-border-radius, @tag-border-color);
+    }
+}
+
+.tag-primary {
+    border-radius: @tag-sm-border-radius;
+    color: @tag-primary-color;
+
+    &.active, &:active {
+        border-color: @tag-primary-active-color;
+        color: @tag-primary-active-color;
+    }
+
+    &:after {
+        border-color: @tag-primary-border-color;
+    }
+}
+
+.tag-danger {
+    border-radius: @tag-sm-border-radius;
+    color: @tag-danger-color;
+
+    &.active, &:active {
+        border-color: @tag-danger-active-color;
+        color: @tag-danger-active-color;
+    }
+
+    &:after {
+        border-color: @tag-danger-border-color;
+    }
+}
+
+.tag-orange {
+    border-radius: @tag-sm-border-radius;
+    color: @tag-orange-color;
+
+    &.active, &:active {
+        border-color: @tag-orange-active-color;
+        color: @tag-orange-active-color;
+    }
+
+    &:after {
+        border-color: @tag-orange-border-color;
+    }
+}

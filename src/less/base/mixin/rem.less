@@ -1,0 +1,11 @@
+.html-font-size(@min, @max) when (@min = -1) {
+    font-size: ((@max + 1) / 375) * 100px;
+}
+
+.html-font-size(@min, @max) when (@max = -1) {
+    font-size: (@min / 375) * 100px;
+}
+
+.html-font-size(@min, @max) when (@min > -1) and (@max > -1) {
+    font-size: (@min / 375) * 100px;
+}

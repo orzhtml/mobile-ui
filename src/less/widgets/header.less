@@ -1,0 +1,180 @@
+@import "../base/mixin/border";
+@import "../base/variable";
+@import "../base/mixin/nowrap";
+
+.global-header {
+    background-color: #fff;
+    height: 50px;
+    padding: 15px;
+    position: relative;
+
+    &:after {
+        .border-b();
+    }
+
+    .back {
+        color: #197ae5;
+        display: block;
+        font-size: 15px;
+        height: 40px;
+        line-height: 20px;
+        left: 15px;
+        margin-top: -20px;
+        position: absolute;
+        padding: 10px 0;
+        top: 50%;
+
+        .icon-back {
+            color: #197be6;
+            margin-left: -10px;
+            width: 30px;
+
+            &:before {
+                font-size: 36px;
+            }
+        }
+    }
+
+    h1 {
+        .nowrap();
+
+        color: #000;
+        font-size: 18px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        margin: 0 70px;
+
+    }
+
+    &.global-header-blue {
+        background-color: #197ae5;
+        &:after {
+            display: none;
+        }
+        .aside-menu {
+            a {
+                color: #fff;
+            }
+        }
+    }
+
+    .logo-home {
+        width: 199px;
+        height: 18px;
+        left: 0;
+        position: absolute;
+        top: 50%;
+        margin-top: -9px;
+        margin-left:15px;
+
+        &:after {
+            content: '';
+            background: url(http://s2.51offer.com/51offer/2015-07-31/3_main-logo.png) no-repeat;
+            background-size: 199px 18px;
+            height: 18px;
+            line-height: 18px;
+            width: 199px;
+            display: block;
+        }
+    }
+
+}
+// 头部菜单
+.aside-menu {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    width: 66px;
+    height: 20px;
+    margin-top: -13px;
+
+    a {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        color: #197ae5;
+        line-height: 18px;
+        position: relative;
+        vertical-align: middle;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-stroke-width: 0;
+
+        &:before {
+            font-family: iconfont;
+            font-size: 30px;
+            font-style: normal;
+        }
+
+        &.personal-center {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0;
+            line-height: 30px;
+        }
+
+        &.personal-home {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0;
+            line-height: 30px;
+        }
+
+        &.personal-home:after {
+            width: 36px;
+            height: 16px;
+            content: '';
+            display: inline-block;
+            background-image: url(http://s2.51offer.com/51offer/h5/global/2015-12-01/invite.png);
+            background-size: 36px auto;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            right: 22px;
+        }
+
+        &.icon-menu {
+            position: relative;
+            z-index: 1000;
+            display: inline-block;
+            line-height: 30px;
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0px;
+
+            &.icon-menu-active {
+                z-index: 2000;
+            }
+        }
+
+        &.icon-home {
+            position: relative;
+            z-index: 1000;
+            display: inline-block;
+            line-height: 30px;
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0px;
+
+            &.icon-menu-active {
+                color: #197AE5;
+                z-index: 2000;
+            }
+        }
+
+
+        &.icon {
+            -webkit-text-stroke-width: 0;
+        }
+        &.icon-share {
+            line-height: 30px;
+            &:before {
+                font-size: 25px;
+            }
+        }
+    }
+}

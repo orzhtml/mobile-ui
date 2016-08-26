@@ -6,4 +6,4 @@ node_modules/
 .git/
 db.json
 npm-debug.log
-public
+dist/

@@ -1,0 +1,140 @@
+@import "mixin/icon-font";
+@import "variable";
+
+@font-face {
+    .icon-font(@icon-font-svg-id);
+}
+
+.icon {
+    display: inline-block;
+    line-height: 18px;
+    position: relative;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+
+    &:before {
+        font-family: @icon-font-name;
+        font-size: 20px;
+        font-style: normal;
+    }
+}
+
+.icon-arrows-right {
+    .icon(@icon-arrows-right);
+}
+
+.icon-arrows-left {
+    .icon(@icon-arrows-left);
+}
+
+.icon-arrows-up {
+    .icon(@icon-arrows-up);
+}
+
+.icon-arrows-down {
+    .icon(@icon-arrows-down);
+}
+
+.icon-button {
+    .icon(@icon-button);
+}
+
+.icon-dialog {
+    .icon(@icon-dialog);
+}
+
+.icon-dropdown {
+    .icon(@icon-dropdown);
+}
+
+.icon-form {
+    .icon(@icon-form);
+}
+
+.icon-list {
+    .icon(@icon-list);
+}
+
+.icon-panel {
+    .icon(@icon-panel);
+}
+
+.icon-slide {
+    .icon(@icon-slide);
+}
+
+.icon-tab {
+    .icon(@icon-tab);
+}
+
+.icon-tag {
+    .icon(@icon-tag);
+}
+
+.icon-font {
+    .icon(@icon-font);
+}
+
+.icon-close {
+    .icon(@icon-close);
+}
+
+.icon-back {
+    .icon-arrows-left;
+}
+
+.icon-close-circled {
+    .icon(@icon-close-circled);
+}
+
+.icon-eye {
+    .icon(@icon-eye);
+}
+
+.icon-checkbox {
+    .icon(@icon-checkbox);
+}
+
+.icon-checkbox-checked {
+    .icon(@icon-checkbox-checked);
+}
+
+.icon-search {
+    .icon(@icon-search);
+}
+
+.icon-arrows-right-sm {
+    .icon(@icon-arrows-right-sm);
+}
+
+.icon-arrows-left-sm {
+    .icon(@icon-arrows-left-sm);
+}
+
+.icon-arrows-up-sm {
+    .icon(@icon-arrows-up-sm);
+}
+
+.icon-arrows-down-sm {
+    .icon(@icon-arrows-down-sm);
+}
+
+.icon-article {
+    .icon(@icon-article);
+}
+.icon-menu,.icon-home {
+    .icon(@icon-menu);
+}
+.personal-home,.personal-center {
+    .icon(@icon-personal);
+}
+.icon-share {
+    .icon(@icon-share);
+}
+.icon-card {
+    .icon(@icon-card);
+}
+.icon-lock {
+    .icon(@icon-lock);
+}

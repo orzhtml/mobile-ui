@@ -1,0 +1,52 @@
+@import "../base/mixin/border";
+@import "../base/variable";
+
+.ui-border-t {
+    &:before {
+        .border-t(@border-color);
+    }
+
+    &:first-child {
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.ui-border-b {
+    &:after {
+        .border-b(@border-color);
+    }
+
+    &:last-child {
+        &:after {
+            display: none;
+        }
+    }
+}
+
+.ui-border-tb {
+    &:before {
+        .border-t(@border-color);
+    }
+
+    &:after {
+        .border-b(@border-color);
+    }
+}
+
+.ui-border-l {
+    &:before {
+        .border-l(@border-color);
+    }
+}
+
+.ui-border-r {
+    &:after {
+        .border-r(@border-color);
+    }
+}
+
+.ui-border {
+    border: 1px solid @border-color;
+}

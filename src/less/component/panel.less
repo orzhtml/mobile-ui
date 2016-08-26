@@ -1,0 +1,143 @@
+@import "../base/variable";
+@import "../base/mixin/border";
+.color-orange {
+    color: @color-primary-orange;
+}
+.panel, .panel-arrowlink {
+    display: block;
+	width: 100%;
+	background-color: @panel-background;
+    position: relative;
+    margin-top: @panel-margin;
+    padding: @panel-padding;
+
+    &:before {
+        .border-t(@border-color);
+    }
+
+    &:after {
+        .border-b(@border-color);
+    }
+
+    .panel:not(.ui-border-tb):not(.ui-border){
+        &:not(.ui-border-t) {
+           &:before{
+                display: none;
+           }
+        }
+        &:not(.ui-border-b) {
+           &:after{
+                display: none;
+           }
+        }
+    }
+
+    &.panel-pb {
+        padding-bottom: 15px;
+    }
+}
+
+.panel-center{
+    text-align: center;
+}
+
+.panel-hd {
+    color: @global-title-color;
+    display: block;
+    font-size: 19px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 15px;
+    position: relative;
+
+    &:before{
+        background-color: @global-title-color;
+        content: '';
+        display: block;
+        height: 17px;
+        position: absolute;
+        left: 15px;
+        margin-top: -8.5px;
+        top: 50%;
+        width: 2px;
+    }
+
+    .panel-title {
+        padding-left: 12px;
+    }
+    .panel-title-r {
+        font-size: 15px;
+        color: @color-gray-darker;
+        float: right;
+    }
+
+    .panel-hd-left{
+        
+    }
+    
+    .panel-hd-right{
+        float: right;
+        font-size: 14px;
+        color: @color-gray;
+
+        &.more {
+            &:after {
+                content: @icon-arrows-right-sm;
+                color: #818181;
+                font-family: @icon-font-name;
+                font-size: 16px;
+                vertical-align: middle;
+                width: 6px;
+            }
+        }
+    }
+}
+
+.panel-arrowlink {
+    padding-top: 0;
+
+    .panel-hd {
+        height: 50px;
+        padding: 15px 15px 12px;
+
+        &:active {
+            background-color: @highlight-color;
+        }
+
+        &:after {
+            content: @icon-arrows-right;
+            color: @color-primary;
+            display: inline-block;
+            float: right;
+            font-family: @icon-font-name;
+            font-size: 20px;
+            margin-right: 8px;
+            position: relative;
+            width: 6px;
+        }
+    }
+}
+
+.panel-middle{
+    > .list-group, > .media-group {
+        &:first-child {
+            margin-top: 0;
+
+            &:before {
+                display: none;
+            }
+        }
+    }
+}
+
+.panel-ft{
+    padding: 0 5px 10px;
+    overflow: hidden;
+    .panel-ft-left{
+        float: left;
+    }
+    
+    .panel-ft-right{
+        float: right;
+    }
+}
