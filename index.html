@@ -1,10 +1,2478 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mobile - UI 组件">
+    <meta name="keywords" content="Mobile,UI 组件">
+    <meta name="author" content="Mobile - 前端开发-vincent.c">
+
+    <title>Mobile - UI 组件</title>
+    <link rel="stylesheet" href="./css/mobile-ui.css">
+    <link rel="stylesheet" href="./css/widgets/header.css">
+    <link rel="stylesheet" href="./index.css">
+    <script>
+        // 指定跳转地址
+        var commonURL = 'http://orzhtml.github.io/mobile-ui/mobile.html';
+
+        function mobile_device_detect(url) {
+            var thisOS = navigator.platform;
+            var os = ["iPhone", "iPod", "iPad", "android", "Nokia", "SymbianOS", "Symbian", "Windows Phone", "Phone", "Linux armv71", "MAUI", "UNTRUSTED/1.0", "Windows CE", "BlackBerry", "IEMobile"];
+            for (var i = 0; i < os.length; i++) {
+                if (thisOS.match(os[i])) {
+                    window.location = url;
+                }
+            }
+            if (navigator.platform.indexOf('iPad') != -1) {
+                window.location = url;
+            }
+            var check = navigator.appVersion;
+            if (check.match(/linux/i)) {
+                if (check.match(/mobile/i) || check.match(/X11/i)) {
+                    window.location = url;
+                }
+            }
+        }
+        mobile_device_detect(commonURL);
+    </script>
 </head>
 <body>
-test
+    
+<div class="banner">
+    <div class="banner-content">
+        <h1>Mobile UI 组件 <span>+Beta</span></h1>
+        <p class="info">简单易用，轻量快捷，为移动端服务的前端框架</p>
+    </div>
+</div>
+
+<div class="container bs-docs-container">
+    <div class="sidebar">
+        <div class="bs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-sidenav">
+                <li><a href="#overview">概览</a></li>
+                <li>
+                    <a href="#btn">按钮</a>
+                    <ul class="nav">
+                        <li><a href="#btn-1">普通小按钮</a></li>
+                        <li><a href="#btn-2">普通按钮</a></li>
+                        <li><a href="#btn-3">普通大按钮</a></li>
+                        <li><a href="#btn-4">蓝色按钮</a></li>
+                        <li><a href="#btn-5">橙色按钮</a></li>
+                        <li><a href="#btn-6">按钮组</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#dialog">弹窗</a>
+                    <ul class="nav">
+                        <li><a href="#dialog-1">弹窗有标题</a></li>
+                        <li><a href="#dialog-2">弹窗没标题</a></li>
+                        <li><a href="#dialog-3">提醒弹窗</a></li>
+                        <li><a href="#dialog-4">弹窗二级联动</a></li>
+                        <li><a href="#dialog-5">弹窗三级联动</a></li>
+                        <li><a href="#dialog-6">底部弹窗 默认-居中</a></li>
+                        <li><a href="#dialog-7">带滚动条弹窗</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#form">表单</a>
+                    <ul class="nav">
+                        <li><a href="#form-1">搜索栏 点击前</a></li>
+                        <li><a href="#form-2">搜索栏 点击后</a></li>
+                        <li><a href="#form-3">单选项</a></li>
+                        <li><a href="#form-4">多选项</a></li>
+                        <li><a href="#form-5">输入项</a></li>
+                        <li><a href="#form-6">注册登录输入项</a></li>
+                        <li><a href="#form-7">弹窗表单</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#list">列表</a>
+                    <ul class="nav">
+                        <li><a href="#list-1">带标签</a></li>
+                        <li><a href="#list-2">带图标、说明</a></li>
+                        <li><a href="#list-3">带跳转</a></li>
+                        <li><a href="#list-4">带说明、跳转</a></li>
+                        <li><a href="#list-5">带图标、说明、跳转</a></li>
+                        <li><a href="#list-6">媒体对象</a></li>
+                        <li><a href="#list-7">媒体对象列表 - 图片在左</a></li>
+                        <li><a href="#list-8">媒体对象列表 - 图左带底</a></li>
+                        <li><a href="#list-9">媒体对象列表 - 图左没底</a></li>
+                        <li><a href="#list-10">图文列表（图在左 公寓）</a></li>
+                        <li><a href="#list-11">图文列表（图在右 公寓）</a></li>
+                        <li><a href="#list-12">公寓列表项</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#panel">面板</a>
+                    <ul class="nav">
+                        <li><a href="#panel-1">带普通列表的</a></li>
+                        <li><a href="#panel-2">带图文列表的</a></li>
+                        <li><a href="#panel-3">带跳转</a></li>
+                        <li><a href="#panel-4">带内容带底部</a></li>
+                        <li><a href="#panel-5">带小图标、说明</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#slide">幻灯片</a>
+                    <ul class="nav">
+                        <li><a href="#slide-1">不带标题</a></li>
+                        <li><a href="#slide-2">带标题</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#article">文章</a>
+                </li>
+                <li>
+                    <a href="#tag">标签</a>
+                    <ul class="nav">
+                        <li><a href="#tag-1">默认 tag</a></li>
+                        <li><a href="#tag-2">大尺寸 tag</a></li>
+                        <li><a href="#tag-3">小尺寸 tag</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#part">部件</a>
+                    <ul class="nav">
+                        <li><a href="#part-1">头部1</a></li>
+                        <li><a href="#part-2">头部2</a></li>
+                        <li><a href="#part-3">头部3（带分享按钮）</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#iconfont">字体图标</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapper">
+
+        <div class="bs-docs-section">
+            <h1 id="overview" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/mobile.html">概览</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/mobile.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <p class="lead">Mobile UI是简单易用，轻量快捷的移动端UI框架，可以令用户的使用感知更加统一。<br>包含按钮、表单、弹窗、列表、面板、幻灯片、标签、字体图标等各式元素。</p>
+        </div>
+        <div class="bs-docs-section">
+            <h1 id="btn" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/button.html">按钮 Button</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/button.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <p class="lead" id="btn-1">普通小按钮</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <a class="btn-sm">确定</a>
+                    <a class="btn-sm active">确定</a>
+                    <a class="btn-sm btn-disabled">确定</a>
+                </div>
+                <pre><code id="btn-code-1" class="html"></code></pre>
+                <script class="pre-code" data-id="btn-code-1" type="text/x-handlebars-template">
+<a class="btn-sm">确定</a>
+<a class="btn-sm active">确定</a>
+<a class="btn-sm btn-disabled">确定</a>
+</script>
+            </div>
+
+            <p class="lead" id="btn-2">普通按钮</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <a class="btn">确定</a>
+                    <a class="btn active">确定</a>
+                    <a class="btn btn-disabled">确定</a>
+                </div>
+                <pre><code id="btn-code-2" class="html"></code></pre>
+                <script class="pre-code" data-id="btn-code-2" type="text/x-handlebars-template">
+<a class="btn">确定</a>
+<a class="btn active">确定</a>
+<a class="btn btn-disabled">确定</a>
+</script>
+            </div>
+
+            <p class="lead" id="btn-3">普通大按钮</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <a class="btn-lg">确定</a>
+                    <a class="btn-lg active">确定</a>
+                    <a class="btn-lg btn-disabled">确定</a>
+                </div>
+                <pre><code id="btn-code-3" class="html"></code></pre>
+                <script class="pre-code" data-id="btn-code-3" type="text/x-handlebars-template">
+<a class="btn-lg">确定</a>
+<a class="btn-lg active">确定</a>
+<a class="btn-lg btn-disabled">确定</a>
+</script>
+            </div>
+
+            <p class="lead" id="btn-4">蓝色按钮</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <a class="btn-sm btn-primary">确定</a>
+                    <a class="btn-sm btn-primary active">确定</a>
+                    <a class="btn-sm btn-primary btn-disabled">确定</a>
+                </div>
+                <pre><code id="btn-code-4" class="html"></code></pre>
+                <script class="pre-code" data-id="btn-code-4" type="text/x-handlebars-template">
+<a class="btn-sm btn-primary">确定</a>
+<a class="btn-sm btn-primary active">确定</a>
+<a class="btn-sm btn-primary btn-disabled">确定</a>
+</script>
+            </div>
+
+            <p class="lead" id="btn-5">橘色按钮</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <a class="btn-sm btn-orange">确定</a>
+                    <a class="btn-sm btn-orange active">确定</a>
+                    <a class="btn-sm btn-orange btn-disabled">确定</a>
+                </div>
+                <pre><code id="btn-code-5" class="html"></code></pre>
+                <script class="pre-code" data-id="btn-code-5" type="text/x-handlebars-template">
+<a class="btn-sm btn-orange">确定</a>
+<a class="btn-sm btn-orange active">确定</a>
+<a class="btn-sm btn-orange btn-disabled">确定</a>
+</script>
+            </div>
+
+            <p class="lead" id="btn-6">按钮组</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="btn-group">
+                        <a class="btn-sm">按钮</a>
+                        <a class="btn-sm">按钮</a>
+                        <a class="btn-sm">按钮</a>
+                    </div>
+                    <p style="margin-top: 5px;"></p>
+                    <div class="btn-group">
+                        <a class="btn">按钮</a>
+                        <a class="btn">按钮</a>
+                        <a class="btn">按钮</a>
+                    </div>
+                    <p style="margin-top: 5px;"></p>
+                    <div class="btn-group">
+                        <a class="btn-lg">按钮</a>
+                        <a class="btn-lg">按钮</a>
+                        <a class="btn-lg">按钮</a>
+                    </div>
+                </div>
+                <pre><code id="btn-code-6" class="html"></code></pre>
+                <script class="pre-code" data-id="btn-code-6" type="text/x-handlebars-template">
+                <div class="btn-group">
+                    <a class="btn-sm">按钮</a>
+                    <a class="btn-sm">按钮</a>
+                    <a class="btn-sm">按钮</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn">按钮</a>
+                    <a class="btn">按钮</a>
+                    <a class="btn">按钮</a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn-lg">按钮</a>
+                    <a class="btn-lg">按钮</a>
+                    <a class="btn-lg">按钮</a>
+                </div>
+                </script>
+            </div>
+
+            <p class="lead" id="btn-7">无边链接按钮</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <a class="btn btn-link">更多 <i class="icon icon-arrows-right-sm"></i></a>
+                </div>
+                <pre><code id="btn-code-7" class="html"></code></pre>
+                <script class="pre-code" data-id="btn-code-7" type="text/x-handlebars-template">
+<a class="btn btn-link">更多 <i class="icon icon-arrows-right-sm"></i></a>
+</script>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="dialog" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/dialog.html">弹窗 Dialog</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/dialog.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <p class="lead" id="dialog-1">带标题没关闭按钮有确认按钮</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <button id="example" class="btn btn-block">点我看看</button>
+                </div>
+                <pre><code id="dialog-code-1" class="javascript"></code></pre>
+                <script class="pre-code" data-id="dialog-code-1" type="text/x-handlebars-template">
+var tpl = $('#template').html();
+$('#example').on('click',function(){
+    $.dialog({
+        "id":'exampleDialog',
+        "class_name": 'example',
+        "title":'title',
+        "content": '<div class="dia-content"><div style="height:200px;">内容部分</div></div>',
+        "button": ["确认"]
+    });
+});
+</script>
+            </div>
+            <p class="lead" id="dialog-2">没标题有关闭按钮有有确认取消按钮</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <button id="example2" class="btn btn-block">点我看看</button>
+                </div>
+                <pre><code id="dialog-code-2" class="javascript"></code></pre>
+                <script class="pre-code" data-id="dialog-code-2" type="text/x-handlebars-template">
+                $('#example2').on('click',function(){
+                    $.dialog({
+                        "close":true,
+                        "id":'exampleDialog2',
+                        "class_name": 'example',
+                        "content": '<div class="dia-content"><div style="height:200px;">内容部分</div></div>',
+                        "button": ["确认","取消"]
+                    });
+                });
+                </script>
+            </div>
+            <p class="lead" id="dialog-3">提醒弹窗</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <button id="example3" class="btn btn-block">点我看看</button>
+                </div>
+                <pre><code id="dialog-code-3" class="javascript"></code></pre>
+                <script class="pre-code" data-id="dialog-code-3" type="text/x-handlebars-template">
+$('#example3').on('click',function(){
+    var dia = $.dialog({
+        "close": false,
+        "id":'exampleDialog3',
+        "class_name": 'example',
+        "content": '验证码已发送,请查看手机短信.',
+        "button": false
+    });
+
+    setTimeout(function () {
+        dia.dialog('hide');
+    }, 3000);
+});
+                </script>
+            </div>
+            <p class="lead" id="dialog-4">弹窗二级联动（例如选地区）</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="ui-dialog-tab">
+                        <ul class="ui-dialog-tab-nav">
+                            <li data-type="select_major">全部专业方向 <i class="icon icon-arrows-up"></i></li>
+                            <li data-type="select_degree">全部学位类型 <i class="icon icon-arrows-down"></i></li>
+                        </ul>
+                        <div class="ui-dialog-tab-content">
+                            <div class="ui-dialog-tab-item"  id="select_major" style="margin-top: 0;max-height: 300px;">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span class="list-group-bd">工科</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="list-group-bd">经济金融</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="list-group-bd">商科</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="ui-dialog-tab-item"  id="select_degree" style="margin-top:0px;max-height: 300px;">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span class="list-group-bd">本科</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="list-group-bd">硕士</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="list-group-bd">博士</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="dialog-code-4" class="javascript"></code></pre>
+                <script class="pre-code" data-id="dialog-code-4" type="text/x-handlebars-template">
+var window_height = window.screen.height;
+$(".ui-dialog-tab-nav li").on("click",function(){
+    var $ui_tab = $(this).closest(".ui-dialog-tab");
+    var $ui_tab_content = $ui_tab.find(".ui-dialog-tab-content");
+    console.log($ui_tab);
+    var data_type=$(this).data("type");
+    if($(this).hasClass("current")){
+        $(this).removeClass("current");
+        $ui_tab_content.hide();
+        $ui_tab_content.find(".ui-dialog-tab-item").hide();
+        $("body").css("overflow","auto");
+    } else {
+        $(this).addClass("current").siblings().removeClass("current");
+        $ui_tab_content.show();
+        $ui_tab_content.find(".ui-dialog-tab-item").hide();
+        $ui_tab_content.find(".ui-dialog-tab-item#"+data_type).show();
+        $("body").css("overflow","hidden");
+    }
+    $ui_tab_content.css("height",window_height-$ui_tab_content.offset().top);
+});
+                </script>
+            </div>
+
+            <p class="lead" id="dialog-5">弹窗三级联动（例如选地区）</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="ui-dialog-tab" style="z-index: 4;">
+                        <ul class="ui-dialog-tab-nav" >
+                            <li data-type="select_aera">英国 <i class="icon icon-arrows-up"></i></li>
+                            <li data-type="select_major">专业 <i class="icon icon-arrows-up"></i></li>
+                            <li data-type="select_degree">学位 <i class="icon icon-arrows-down"></i></li>
+                        </ul>
+                        <div class="ui-dialog-tab-content">
+                            <div class="ui-dialog-tab-item" id="select_aera">
+                                <div class="ui-dialog-tab-left">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">英国</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">英国</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">英国</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">英国</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">英国</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">英国</span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="ui-dialog-tab-right">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="ui-dialog-tab-item" id="select_major">
+                                <div class="ui-dialog-tab-left">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">工科</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">工科</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">工科</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">工科</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">工科</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">工科</span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="ui-dialog-tab-right">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="ui-dialog-tab-item" id="select_degree">
+                                <div class="ui-dialog-tab-left">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">本科</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">硕士</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">博士</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ui-dialog-tab-right">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="list-group-bd">全部</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="dialog-code-5" class="javascript"></code></pre>
+                <script class="pre-code" data-id="dialog-code-5" type="text/x-handlebars-template">
+var window_height = window.screen.height;
+$(".ui-dialog-tab-nav li").on("click",function(){
+    var $ui_tab = $(this).closest(".ui-dialog-tab");
+    var $ui_tab_content = $ui_tab.find(".ui-dialog-tab-content");
+    console.log($ui_tab);
+    var data_type=$(this).data("type");
+    if($(this).hasClass("current")){
+        $(this).removeClass("current");
+        $ui_tab_content.hide();
+        $ui_tab_content.find(".ui-dialog-tab-item").hide();
+        $("body").css("overflow","auto");
+    } else {
+        $(this).addClass("current").siblings().removeClass("current");
+        $ui_tab_content.show();
+        $ui_tab_content.find(".ui-dialog-tab-item").hide();
+        $ui_tab_content.find(".ui-dialog-tab-item#"+data_type).show();
+        $("body").css("overflow","hidden");
+    }
+    $ui_tab_content.css("height",window_height-$ui_tab_content.offset().top);
+});
+                </script>
+            </div>
+
+            <p class="lead" id="dialog-6">底部弹窗 默认-居中</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <button id="example4" class="btn btn-block" data-dropdown="state-template">点我看看</button>
+                    <script id="state-template" type="text/x-handlebars-template">
+                        <div class="ui-select-list">
+                            <a class="J_selData" data-val="44">英国</a>
+                            <a class="J_selData" data-val="61">澳洲</a>
+                            <a class="J_selData" data-val="64">新西兰</a>
+                            <a class="J_selData" data-val="81">日本</a>
+                        </div>
+                    </script>
+                </div>
+                <pre><code id="dialog-code-6" class="javascript"></code></pre>
+                <script class="pre-code" data-id="dialog-code-6" type="text/x-handlebars-template">
+<button id="example4" class="btn btn-block" data-dropdown="state-template">点我看看</button>
+<!-- script 弹窗内容 -->
+&lt;script id="state-template" type="text/x-handlebars-template"&gt;
+    <div class="ui-select-list">
+        <a class="J_selData" data-val="44">英国</a>
+        <a class="J_selData" data-val="61">澳洲</a>
+        <a class="J_selData" data-val="64">新西兰</a>
+        <a class="J_selData" data-val="81">日本</a>
+    </div>
+&lt;/script&gt;
+$('#example4').on('click', function () {
+    var $this = $(this);
+    var name = $this.data('dropdown');
+    var tpl = $('#' + name).html();
+    var $input = $this.find('input[type="hidden"]');
+    var input_val = $input.val();
+    var dia = $.dialog({
+        "class_name": 'ui-dialog-actions',
+        "content": tpl,
+        "button": false,
+        "speed": 300
+    });
+    // 循环赋值高亮
+    dia.find('.J_selData').each(function () {
+        var $self = $(this);
+        if ($self.data('val') == input_val) {
+            $self.addClass('active');
+            return false;
+        }
+    });
+    // 点击触发选项
+    dia.find('.J_selData').on('click', function () {
+        var $this = $(this);
+        var text = $this.text();
+        var val = $this.attr('data-val');
+        var obj = $('[data-rel="' + id + '"]');
+        obj.find('.text').removeClass('placeholder').text(text);
+        obj.find('input').val(val);
+        $this.addClass('active').siblings().removeClass('active');
+        dia.removeClass('show-visible');
+        setTimeout(function () {
+            dia.dialog("hide");
+        }, 300);
+    });
+});
+                </script>
+            </div>
+
+            <p class="lead" id="dialog-7">有滚动条</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <button id="example5" class="btn btn-block">点我看看</button>
+
+                </div>
+                <pre><code id="dialog-code-7" class="javascript"></code></pre>
+                <script class="pre-code" data-id="dialog-code-7" type="text/x-handlebars-template">
+var example5_html = '<div class="ui-dialog-content">限制最大高度，带滚动条</div>';
+$('#example5').on('click',function(){
+    $.dialog({
+        "close":true,
+        "id":'exampleDialog5',
+        "class_name": 'ui-dialog-list',
+        "title":'标题',
+        "content": example5_html,
+        "button": []
+    });
+});
+                </script>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="form" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/form.html">表单 Form</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/form.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <p class="lead" id="form-1">搜索栏 点击前</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="ui-search">
+                        <div class="ui-search-hd">
+                            <div class="ui-searchbar">
+                                <i class="icon icon-search"></i>
+                                <div class="ui-searchbar-text">请搜索您要的专业中英文名字</div>
+                                <div class="ui-searchbar-input"><input type="text" placeholder="请搜索您要的专业中英文名字"></div>
+                                <i class="icon icon-close-circled"></i>
+                            </div>
+                            <button class="ui-searchbar-cancel">取消</button>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="form-code-1" class="html"></code></pre>
+                <script class="pre-code" data-id="form-code-1" type="text/x-handlebars-template">
+<div class="ui-search">
+    <div class="ui-search-hd">
+        <div class="ui-searchbar">
+            <i class="icon icon-search"></i>
+            <div class="ui-searchbar-text">请搜索您要的专业中英文名字</div>
+            <div class="ui-searchbar-input"><input type="text" placeholder="请搜索您要的专业中英文名字"></div>
+            <i class="icon icon-close-circled"></i>
+        </div>
+        <button class="ui-searchbar-cancel">取消</button>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="form-2">搜索栏 点击后</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="ui-search focus">
+                        <div class="ui-search-hd">
+                            <div class="ui-searchbar">
+                                <i class="icon icon-search"></i>
+                                <div class="ui-searchbar-text">请搜索您要的专业中英文名字</div>
+                                <div class="ui-searchbar-input"><input type="text" placeholder="请搜索您要的专业中英文名字"></div>
+                                <i class="icon icon-close-circled"></i>
+                            </div>
+                            <button class="ui-searchbar-cancel">取消</button>
+                        </div>
+                        <div class="ui-search-bd">
+                            <dl class="ui-search-dl">
+                                <dt class="ui-search-dt">城市</dt>
+                                <dd class="ui-search-dd">伦敦，<span>英国</span></dd>
+                                <dd class="ui-search-dd">伦敦，<span>英国</span></dd>
+                            </dl>
+                            <dl class="ui-search-dl">
+                                <dt class="ui-search-dt">大学</dt>
+                                <dd class="ui-search-dd">[ 埃克塞特大学]   英国</dd>
+                                <dd class="ui-search-dd">[ 埃克塞特大学]   英国</dd>
+                            </dl>
+                            <dl class="ui-search-dl">
+                                <dt class="ui-search-dt">公寓</dt>
+                                <dd class="ui-search-dd">[Lbnb see see]伦敦，英国</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="form-code-2" class="html"></code></pre>
+                <script class="pre-code" data-id="form-code-2" type="text/x-handlebars-template">
+<div class="ui-search focus">
+    <div class="ui-search-hd">
+        <div class="ui-searchbar">
+            <i class="icon icon-search"></i>
+            <div class="ui-searchbar-text">请搜索您要的专业中英文名字</div>
+            <div class="ui-searchbar-input"><input type="text" placeholder="请搜索您要的专业中英文名字"></div>
+            <i class="icon icon-close-circled"></i>
+        </div>
+        <button class="ui-searchbar-cancel">取消</button>
+    </div>
+    <div class="ui-search-bd">
+        <dl class="ui-search-dl">
+            <dt class="ui-search-dt">城市</dt>
+            <dd class="ui-search-dd">伦敦，<span>英国</span></dd>
+            <dd class="ui-search-dd">伦敦，<span>英国</span></dd>
+        </dl>
+        <dl class="ui-search-dl">
+            <dt class="ui-search-dt">大学</dt>
+            <dd class="ui-search-dd">[ 埃克塞特大学]   英国</dd>
+            <dd class="ui-search-dd">[ 埃克塞特大学]   英国</dd>
+        </dl>
+        <dl class="ui-search-dl">
+            <dt class="ui-search-dt">公寓</dt>
+            <dd class="ui-search-dd">[Lbnb see see]伦敦，英国</dd>
+        </dl>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="form-3">单选项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="ui-form">
+                        <div class="ui-form-item">
+                            <label class="ui-radio">
+                                <input type="radio" name="sex">
+                                <span>男</span>
+                            </label>
+                            <label class="ui-radio">
+                                <input type="radio" name="sex">
+                                <span>女</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="form-code-3" class="html"></code></pre>
+                <script class="pre-code" data-id="form-code-3" type="text/x-handlebars-template">
+<div class="ui-form">
+    <div class="ui-form-item">
+        <label class="ui-radio">
+            <input type="radio" name="sex">
+            <span>男</span>
+        </label>
+        <label class="ui-radio">
+            <input type="radio" name="sex">
+            <span>女</span>
+        </label>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="form-4">多选项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="ui-form">
+                        <div class="ui-form-item">
+                            <label class="ui-checkbox">
+                                <input type="checkbox" name="checkbox">
+                                <span>[英国] 本科快捷课程</span>
+                            </label>
+                        </div>
+                        <div class="ui-form-item">
+                            <label class="ui-checkbox">
+                                <input type="checkbox" name="checkbox">
+                                <span>[澳洲] 本科快捷课程</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="form-code-4" class="html"></code></pre>
+                <script class="pre-code" data-id="form-code-4" type="text/x-handlebars-template">
+<div class="ui-form">
+    <div class="ui-form-item">
+        <label class="ui-checkbox">
+            <input type="checkbox" name="checkbox">
+            <span>[英国] 本科快捷课程</span>
+        </label>
+    </div>
+    <div class="ui-form-item">
+        <label class="ui-checkbox">
+            <input type="checkbox" name="checkbox">
+            <span>[澳洲] 本科快捷课程</span>
+        </label>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="form-5">表单输入项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="ui-form">
+                        <label class="ui-form-item">
+                        <span class="ui-form-item-hd">
+                            <span class="form-label">身份证号码:</span>
+                        </span>
+                            <span class="ui-form-item-bd"><input class="form-input" type="text" placeholder="18位身份证号码"></span>
+                        </label>
+                        <label class="ui-form-item">
+                        <span class="ui-form-item-hd">
+                            <span class="form-label">详细地址:</span>
+                        </span>
+                            <span class="ui-form-item-bd"><input class="form-input" type="text" placeholder="街道等详细地址"></span>
+                        </label>
+                        <label class="ui-form-item list-form-access">
+                        <span class="ui-form-item-hd">
+                            <span class="form-label">学校名称:</span>
+                        </span>
+                            <span class="ui-form-item-bd"><input class="form-input" type="text" placeholder="请填写"></span>
+                            <span class="ui-form-item-ft"></span>
+                        </label>
+                        <label class="ui-form-item ui-form-error">
+                        <span class="ui-form-item-hd">
+                            <span class="form-label">获得学位:</span>
+                        </span>
+                            <span class="ui-form-item-bd"><input class="form-input" type="text" placeholder="请输入" value="啊实打实大师"></span>
+                        </label>
+                    </div>
+                </div>
+                <pre><code id="form-code-5" class="html"></code></pre>
+                <script class="pre-code" data-id="form-code-5" type="text/x-handlebars-template">
+<div class="ui-form">
+    <label class="ui-form-item">
+        <span class="ui-form-item-hd">
+            <span class="form-label">身份证号码:</span>
+        </span>
+        <span class="ui-form-item-bd">
+            <input class="form-input" type="text" placeholder="18位身份证号码">
+        </span>
+    </label>
+    <label class="ui-form-item">
+        <span class="ui-form-item-hd">
+            <span class="form-label">详细地址:</span>
+        </span>
+        <span class="ui-form-item-bd">
+            <input class="form-input" type="text" placeholder="街道等详细地址">
+        </span>
+    </label>
+    <label class="ui-form-item list-form-access">
+        <span class="ui-form-item-hd">
+            <span class="form-label">学校名称:</span>
+        </span>
+        <span class="ui-form-item-bd">
+            <input class="form-input" type="text" placeholder="请填写">
+        </span>
+        <span class="ui-form-item-ft"></span>
+    </label>
+    <label class="ui-form-item ui-form-error">
+        <span class="ui-form-item-hd">
+            <span class="form-label">获得学位:</span>
+        </span>
+        <span class="ui-form-item-bd">
+            <input class="form-input" type="text" placeholder="请输入" value="啊实打实大师">
+        </span>
+    </label>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="form-6">表单注册登录输入项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="ui-form">
+                        <div class="ui-form-pure">
+                            <div class="ui-form-item-hd">
+                                <a class="area-code">+0086</a>
+                            </div>
+                            <div class="ui-form-item-bd">
+                                <input type="text" class="form-input" placeholder="请输入手机号">
+                            </div>
+                            <div class="ui-form-item-ft">
+                                <a class="icon icon-close-circled"></a>
+                            </div>
+                        </div>
+                        <div class="ui-form-pure">
+                            <div class="ui-form-item-bd">
+                                <input type="text" class="form-input" placeholder="输入四位手机验证码">
+                            </div>
+                            <div class="ui-form-item-ft">
+                                <a class="icon icon-close-circled"></a>
+                                <a class="btn">获取验证码</a>
+                            </div>
+                        </div>
+                        <div class="ui-form-pure">
+                            <div class="ui-form-item-bd">
+                                <input type="text" class="form-input" placeholder="设置密码">
+                            </div>
+                            <div class="ui-form-item-ft">
+                                <a class="icon icon-close-circled"></a>
+                                <a class="icon icon-eye"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="form-code-6" class="html"></code></pre>
+                <script class="pre-code" data-id="form-code-6" type="text/x-handlebars-template">
+<div class="ui-form">
+    <div class="ui-form-pure">
+        <div class="ui-form-item-hd">
+            <a class="area-code">+0086</a>
+        </div>
+        <div class="ui-form-item-bd">
+            <input type="text" class="form-input" placeholder="请输入手机号">
+        </div>
+        <div class="ui-form-item-ft">
+            <a class="icon icon-close-circled"></a>
+        </div>
+    </div>
+    <div class="ui-form-pure">
+        <div class="ui-form-item-bd">
+            <input type="text" class="form-input" placeholder="输入四位手机验证码">
+        </div>
+        <div class="ui-form-item-ft">
+            <a class="icon icon-close-circled"></a>
+            <a class="btn">获取验证码</a>
+        </div>
+    </div>
+    <div class="ui-form-pure">
+        <div class="ui-form-item-bd">
+            <input type="text" class="form-input" placeholder="设置密码">
+        </div>
+        <div class="ui-form-item-ft">
+            <a class="icon icon-close-circled"></a>
+            <a class="icon icon-eye"></a>
+        </div>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="form-7">弹窗表单</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="ui-form">
+                        <a id="form_example" class="btn" style="margin: 10px auto;">点击弹窗表单</a>
+                    </div>
+                    <script id="template" type="text/x-handlebars-template">
+                        <div class="ui-form-pure">
+                            <div class="ui-form-item-bd">
+                                <input type="text" class="form-input" placeholder="不区分大小写">
+                            </div>
+                            <div class="ui-form-item-ft">
+                                <img src="http://account.51offer.com/imageServlet?session=register&key=8d8490229317c2812dad138385f9cdca" alt="">
+                            </div>
+                        </div>
+                    </script>
+                </div>
+                <pre><code id="form-code-7" class="html"></code></pre>
+                <script class="pre-code" data-id="form-code-7" type="text/x-handlebars-template">
+&lt;script id="template" type="text/x-handlebars-template"&gt;
+    <div class="ui-form-pure">
+        <div class="ui-form-item-bd">
+            <input type="text" class="form-input" placeholder="不区分大小写">
+        </div>
+        <div class="ui-form-item-ft">
+            <img src="http://account.51offer.com/imageServlet?session=register&key=8d8490229317c2812dad138385f9cdca" alt="">
+        </div>
+    </div>
+&lt;/script&gt;
+
+var tpl = $('#template').html();
+$('#form_example').on('click', function () {
+    $.dialog({
+        "id": 'exampleDialog',
+        "class_name": 'ui-dialog-form', // 必须
+        "title": '请输入验证码',
+        "content": tpl,
+        "button": ["确认"]
+    });
+});
+                </script>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="list" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/list.html">列表 List</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/list.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <p class="lead" id="list-1">带标签的列表项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="list-group-bd">标题文字</div>
+                            <div class="list-group-ft"><span class="tag-sm tag-primary">澳大利亚</span></div>
+                        </div>
+                        <di class="list-group-item">
+                            <div class="list-group-bd">标题文字</div>
+                            <div class="list-group-ft"><span class="tag-sm tag-primary">英国</span></div>
+                        </di>
+                    </div>
+                </div>
+                <pre><code id="list-code-1" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-1" type="text/x-handlebars-template">
+<div class="list-group">
+    <div class="list-group-item">
+        <div class="list-group-bd">标题文字</div>
+        <div class="list-group-ft"><span class="tag-sm tag-primary">澳大利亚</span></div>
+    </div>
+    <div class="list-group-item">
+        <div class="list-group-bd">标题文字</div>
+        <div class="list-group-ft"><span class="tag-sm tag-primary">英国</span></div>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="list-2">带标签的列表项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="list-group-hd"><img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt=""></div>
+                            <div class="list-group-bd">标题文字</div>
+                            <div class="list-group-ft">说明文字</div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="list-group-hd"><img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt=""></div>
+                            <div class="list-group-bd">标题文字</div>
+                            <div class="list-group-ft">说明文字</div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="list-code-2" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-2" type="text/x-handlebars-template">
+<div class="list-group">
+    <div class="list-group-item">
+        <div class="list-group-hd">
+            <img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="">
+        </div>
+        <div class="list-group-bd">标题文字</div>
+        <div class="list-group-ft">说明文字</div>
+    </div>
+    <div class="list-group-item">
+        <div class="list-group-hd">
+            <img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="">
+        </div>
+        <div class="list-group-bd">标题文字</div>
+        <div class="list-group-ft">说明文字</div>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="list-3">带跳转的列表项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="list-group list-group-access">
+                        <a class="list-group-item">
+                            <div class="list-group-bd">cell standard</div>
+                            <i class="list-group-ft"></i>
+                        </a>
+                        <a class="list-group-item">
+                            <div class="list-group-bd">cell standard</div>
+                            <i class="list-group-ft"></i>
+                        </a>
+                    </div>
+                </div>
+                <pre><code id="list-code-3" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-3" type="text/x-handlebars-template">
+<div class="list-group list-group-access">
+    <a class="list-group-item">
+        <div class="list-group-bd">cell standard</div>
+        <i class="list-group-ft"></i>
+    </a>
+    <a class="list-group-item">
+        <div class="list-group-bd">cell standard</div>
+        <i class="list-group-ft"></i>
+    </a>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="list-4">带说明、跳转的列表项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="list-group list-group-access">
+                        <a class="list-group-item">
+                            <div class="list-group-bd">cell standard</div>
+                            <div class="list-group-ft">说明文字</div>
+                        </a>
+                        <a class="list-group-item">
+                            <div class="list-group-bd">cell standard</div>
+                            <div class="list-group-ft">说明文字</div>
+                        </a>
+                    </div>
+                </div>
+                <pre><code id="list-code-4" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-4" type="text/x-handlebars-template">
+<div class="list-group list-group-access">
+    <a class="list-group-item">
+        <div class="list-group-bd">cell standard</div>
+        <div class="list-group-ft">说明文字</div>
+    </a>
+    <a class="list-group-item">
+        <div class="list-group-bd">cell standard</div>
+        <div class="list-group-ft">说明文字</div>
+    </a>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="list-5">带图标、说明、跳转的列表项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="list-group list-group-access">
+                        <a class="list-group-item">
+                            <div class="list-group-hd">
+                                <img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="">
+                            </div>
+                            <div class="list-group-bd">cell standard</div>
+                            <div class="list-group-ft">说明文字</div>
+                        </a>
+                        <a class="list-group-item">
+                            <div class="list-group-hd">
+                                <img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="">
+                            </div>
+                            <div class="list-group-bd">cell standard</div>
+                            <div class="list-group-ft">说明文字</div>
+                        </a>
+                    </div>
+                </div>
+                <pre><code id="list-code-5" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-5" type="text/x-handlebars-template">
+<div class="list-group list-group-access">
+    <a class="list-group-item">
+        <div class="list-group-hd"><img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt=""></div>
+        <div class="list-group-bd">cell standard</div>
+        <div class="list-group-ft">说明文字</div>
+    </a>
+    <a class="list-group-item">
+        <div class="list-group-hd"><img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt=""></div>
+        <div class="list-group-bd">cell standard</div>
+        <div class="list-group-ft">说明文字</div>
+    </a>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="list-6">媒体对象列表 - 图片在右</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="media-group">
+                        <a class="media-group-item">
+                            <div class="media-group-bd">
+                                <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+                                <p>
+                                    <span class="tag-sm">澳大利亚</span>
+                                    <span class="tag-sm">美国</span>
+                                </p>
+                                <p class="minor"><span>3分钟前</span><span style="margin-left: 10px;">阅读量129</span></p>
+                            </div>
+                            <div class="media-group-right">
+                                <div class="thumb">
+                                    <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/51offer/thumb/2015-12-23/123.jpg" alt="">
+                                </div>
+                            </div>
+                        </a>
+                        <a class="media-group-item">
+                            <div class="media-group-bd">
+                                <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+                                <p class="minor"><span>3分钟前</span><span style="margin-left: 10px;">阅读量129</span></p>
+                            </div>
+                            <div class="media-group-right">
+                                <div class="thumb">
+                                    <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/51offer/thumb/2015-12-23/123.jpg" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <pre><code id="list-code-6" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-6" type="text/x-handlebars-template">
+<div class="media-group">
+    <a class="media-group-item">
+        <div class="media-group-bd">
+            <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+            <p>
+                <span class="tag-sm">澳大利亚</span>
+                <span class="tag-sm">美国</span>
+            </p>
+            <p class="minor"><span>3分钟前</span><span style="margin-left: 10px;">阅读量129</span></p>
+        </div>
+        <div class="media-group-right">
+            <div class="thumb">
+                <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/51offer/thumb/2015-12-23/123.jpg" alt="">
+            </div>
+        </div>
+    </a>
+    <a class="media-group-item">
+        <div class="media-group-bd">
+            <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+            <p class="minor"><span>3分钟前</span><span style="margin-left: 10px;">阅读量129</span></p>
+        </div>
+        <div class="media-group-right">
+            <div class="thumb">
+                <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/51offer/thumb/2015-12-23/123.jpg" alt="">
+            </div>
+        </div>
+    </a>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="list-7">媒体对象列表 - 图片在左</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="media-group">
+                        <a class="media-group-item">
+                            <div class="media-group-left">
+                                <div class="thumb">
+                                    <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/51offer/thumb/2015-12-23/123.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="media-group-bd">
+                                <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+                                <p>
+                                    <span class="tag-sm">澳大利亚</span>
+                                    <span class="tag-sm">美国</span>
+                                </p>
+                                <p class="minor"><span>3分钟前</span><span style="margin-left: 10px;">阅读量129</span></p>
+                            </div>
+                        </a>
+                        <a class="media-group-item">
+                            <div class="media-group-left">
+                                <div class="thumb">
+                                    <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/51offer/thumb/2015-12-23/123.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="media-group-bd">
+                                <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+                                <p class="minor"><span>3分钟前</span><span style="margin-left: 10px;">阅读量129</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <pre><code id="list-code-7" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-7" type="text/x-handlebars-template">
+<div class="media-group">
+    <a class="media-group-item">
+        <div class="media-group-left">
+            <div class="thumb">
+                <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/51offer/thumb/2015-12-23/123.jpg" alt="">
+            </div>
+        </div>
+        <div class="media-group-bd">
+            <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+            <p>
+                <span class="tag-sm">澳大利亚</span>
+                <span class="tag-sm">美国</span>
+            </p>
+            <p class="minor"><span>3分钟前</span><span style="margin-left: 10px;">阅读量129</span></p>
+        </div>
+    </a>
+    <a class="media-group-item">
+        <div class="media-group-left">
+            <div class="thumb">
+                <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/51offer/thumb/2015-12-23/123.jpg" alt="">
+            </div>
+        </div>
+        <div class="media-group-bd">
+            <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+            <p class="minor"><span>3分钟前</span><span style="margin-left: 10px;">阅读量129</span></p>
+        </div>
+    </a>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="list-8">媒体对象列表 - 图左带底</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="media-group">
+                        <a class="media-group-item">
+                            <div class="media-group-left">
+                                <div class="thumb">
+                                    <img style="width: 60px;" src="http://s2.51offer.com/school/2015-11-09/img201504151350070.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="media-group-bd">
+                                <h5>
+                                    <span class="tag-sm tag-primary">澳大利亚</span>
+                                    <span>London School of Economics and Political Science</span>
+                                </h5>
+                                <h5>牛津大学</h5>
+                            </div>
+                            <div class="media-group-info ui-nowrap-multi">最古老大学·知名学府·古老·欧洲科学园·学院制管理·最古老大学知名学府·古老·欧洲科学园·学院制管理·最古老大学</div>
+                        </a>
+                        <a class="media-group-item">
+                            <div class="media-group-left">
+                                <div class="thumb">
+                                    <img style="width: 60px;" src="http://s2.51offer.com/school/2015-11-09/img201504151350070.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="media-group-bd">
+                                <h5>
+                                    <span class="tag-sm tag-primary">澳大利亚</span>
+                                    <span>London School of Economics and Political Science</span>
+                                </h5>
+                                <h5>牛津大学</h5>
+                            </div>
+                            <div class="media-group-info ui-nowrap-multi">最古老大学·知名学府·古老·欧洲科学园·学院制管理·最古老大学知名学府·古老·欧洲科学园·学院制管理·最古老大学</div>
+                        </a>
+                    </div>
+                </div>
+                <pre><code id="list-code-8" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-8" type="text/x-handlebars-template">
+<div class="media-group">
+    <a class="media-group-item">
+        <div class="media-group-left">
+            <div class="thumb">
+                <img style="width: 60px;" src="http://s2.51offer.com/school/2015-11-09/img201504151350070.jpg" alt="">
+            </div>
+        </div>
+        <div class="media-group-bd">
+            <h5>
+                <span class="tag-sm tag-primary">澳大利亚</span>
+                <span>London School of Economics and Political Science</span>
+            </h5>
+            <h5>牛津大学</h5>
+        </div>
+        <div class="media-group-info ui-nowrap-multi">最古老大学·知名学府·古老·欧洲科学园·学院制管理·最古老大学知名学府·古老·欧洲科学园·学院制管理·最古老大学</div>
+    </a>
+    <a class="media-group-item">
+        <div class="media-group-left">
+            <div class="thumb">
+                <img style="width: 60px;" src="http://s2.51offer.com/school/2015-11-09/img201504151350070.jpg" alt="">
+            </div>
+        </div>
+        <div class="media-group-bd">
+            <h5>
+                <span class="tag-sm tag-primary">澳大利亚</span>
+                <span>London School of Economics and Political Science</span>
+            </h5>
+            <h5>牛津大学</h5>
+        </div>
+        <div class="media-group-info ui-nowrap-multi">最古老大学·知名学府·古老·欧洲科学园·学院制管理·最古老大学知名学府·古老·欧洲科学园·学院制管理·最古老大学</div>
+    </a>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="list-9">媒体对象列表 - 图左没底</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="media-group">
+                        <div class="media-group-item">
+                            <div class="media-group-left">
+                                <span class="thumb"><img style="width: 50px;" src="http://s2.51offer.com/school/2015-11-09/img201504151350070.jpg" alt=""></span>
+                            </div>
+                            <div class="media-group-bd">
+                                <h5>
+                                    <span class="tag-sm tag-primary">英国</span>
+                                    <span>University of Liverpool利物浦大学</span>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="media-group-item">
+                            <div class="media-group-left">
+                                <span class="thumb"><img style="width: 50px;" src="http://s2.51offer.com/school/2015-11-09/img201503191656340.jpg" alt=""></span>
+                            </div>
+                            <div class="media-group-bd">
+                                <h5>
+                                    <span class="tag-sm tag-primary">新西兰</span>
+                                    <span>Coventry University考文垂大学</span>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="media-group-item">
+                            <div class="media-group-left">
+                                <span class="thumb"><img style="width: 50px;" src="http://s2.51offer.com/school/2015-11-09/img201503201108060.jpg" alt=""></span>
+                            </div>
+                            <div class="media-group-bd">
+                                <h5>
+                                    <span class="tag-sm tag-primary">澳大利亚</span>
+                                    <span>The University of Adelaide阿德莱德大学</span>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="list-code-9" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-9" type="text/x-handlebars-template">
+<div class="media-group">
+    <div class="media-group-item">
+        <div class="media-group-left">
+            <span class="thumb"><img style="width: 50px;" src="http://s2.51offer.com/school/2015-11-09/img201504151350070.jpg" alt=""></span>
+        </div>
+        <div class="media-group-bd">
+            <h5>
+                <span class="tag-sm tag-primary">英国</span>
+                <span>University of Liverpool利物浦大学</span>
+            </h5>
+        </div>
+    </div>
+    <div class="media-group-item">
+        <div class="media-group-left">
+            <span class="thumb"><img style="width: 50px;" src="http://s2.51offer.com/school/2015-11-09/img201503191656340.jpg" alt=""></span>
+        </div>
+        <div class="media-group-bd">
+            <h5>
+                <span class="tag-sm tag-primary">新西兰</span>
+                <span>Coventry University考文垂大学</span>
+            </h5>
+        </div>
+    </div>
+    <div class="media-group-item">
+        <div class="media-group-left">
+            <span class="thumb"><img style="width: 50px;" src="http://s2.51offer.com/school/2015-11-09/img201503201108060.jpg" alt=""></span>
+        </div>
+        <div class="media-group-bd">
+            <h5>
+                <span class="tag-sm tag-primary">澳大利亚</span>
+                <span>The University of Adelaide阿德莱德大学</span>
+            </h5>
+        </div>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="list-10">图文列表（图在左 公寓）</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="media-group">
+                        <a class="media-group-item">
+                            <div class="media-group-left">
+                                <div class="thumb">
+                                    <img style="width: 135px;height: 89px;" src="http://s2.51offer.com/school/2016-01-18/img201601181021270.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="media-group-bd">
+                                <h5 class="ui-nowrap-flex">The Tannery The TanneryThe Tannery The TanneryThe Tannery The TanneryThe Tannery The Tannery</h5>
+                                <div class="apt-media-info">
+                                    <div class="apt-addr">Cavendish Street, Leeds, LS31AFLeedsEngland</div>
+                                    <div class="apt-info-ft clearfix">
+                                        <span class="apt-book-state">即将租满</span>
+                                        <span class="apt-price-state"><span class="apt-price">￡127</span> 起/周</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="media-group-item">
+                            <div class="media-group-left">
+                                <div class="thumb">
+                                    <img style="width: 135px;height: 89px;" src="http://s2.51offer.com/school/2015-12-14/img201512141409280.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="media-group-bd">
+                                <h5 class="ui-nowrap-flex">The Tannery The Tannery</h5>
+                                <div class="apt-media-info">
+                                    <p class="apt-addr">Cavendish Street, Leeds, LS31AFLeedsEngland</p>
+                                    <div class="apt-info-ft apt-info-del clearfix">
+                                        <span class="apt-book-full">已经租满</span>
+                                        <span class="apt-price-state"><span class="apt-price">￡127</span> 起/周</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <pre><code id="list-code-10" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-10" type="text/x-handlebars-template">
+<div class="media-group">
+    <a class="media-group-item">
+        <div class="media-group-left">
+            <div class="thumb">
+                <img style="width: 135px;height: 89px;" src="http://s2.51offer.com/school/2016-01-18/img201601181021270.jpg" alt="">
+            </div>
+        </div>
+        <div class="media-group-bd">
+            <h5 class="ui-nowrap-flex">The Tannery The TanneryThe Tannery The TanneryThe Tannery The TanneryThe Tannery The Tannery</h5>
+            <div class="apt-media-info">
+                <div class="apt-addr">Cavendish Street, Leeds, LS31AFLeedsEngland</div>
+                <div class="apt-info-ft clearfix">
+                    <span class="apt-book-state">即将租满</span>
+                    <span class="apt-price-state"><span class="apt-price">￡127</span> 起/周</span>
+                </div>
+            </div>
+        </div>
+    </a>
+    <a class="media-group-item">
+        <div class="media-group-left">
+            <div class="thumb">
+                <img style="width: 135px;height: 89px;" src="http://s2.51offer.com/school/2015-12-14/img201512141409280.jpg" alt="">
+            </div>
+        </div>
+        <div class="media-group-bd">
+            <h5 class="ui-nowrap-flex">The Tannery The Tannery</h5>
+            <div class="apt-media-info">
+                <p class="apt-addr">Cavendish Street, Leeds, LS31AFLeedsEngland</p>
+                <div class="apt-info-ft apt-info-del clearfix">
+                    <span class="apt-book-full">已经租满</span>
+                    <span class="apt-price-state"><span class="apt-price">￡127</span> 起/周</span>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+                </script>
+            </div>
+            <p class="lead" id="list-11">图文列表（图在右 公寓）</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="media-group">
+                        <a class="media-group-item">
+                            <div class="media-group-bd">
+                                <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+                                <p class="intro ui-nowrap-multi">临近圣诞节、春节，英国大学即将放长假，就算不关闭其申请通道，到时候！</p>
+
+                                <div class="minor">
+                                    <div>
+                                        <span class="tag-sm tag-danger">热门</span>
+                                        <span class="tag-sm tag-primary">专题</span>
+                                    </div>
+                                    <div>
+                                        <span class="article-read">1000</span>
+                                        <span >2015-11-11</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media-group-right">
+                                <div class="thumb">
+                                    <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/school/2016-01-22/img201601221715490.jpg" alt="">
+                                </div>
+                            </div>
+                        </a>
+                        <a class="media-group-item">
+                            <div class="media-group-bd">
+                                <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+                                <p class="intro ui-nowrap-multi">临近圣诞节、春节，英国大学即将放长假，就算不关闭其申请通道，到时候！</p>
+
+                                <div class="minor">
+                                    <div>
+                                        <span class="tag-sm tag-danger">热门</span>
+                                        <span class="tag-sm tag-primary">专题</span>
+                                    </div>
+                                    <div>
+                                        <span class="article-read">1000</span>
+                                        <span >2015-11-11</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media-group-right">
+                                <div class="thumb">
+                                    <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/school/2016-01-22/img201601221107390.jpg" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <pre><code id="list-code-11" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-11" type="text/x-handlebars-template">
+<div class="media-group">
+    <a class="media-group-item">
+        <div class="media-group-bd">
+            <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+            <p class="intro ui-nowrap-multi">临近圣诞节、春节，英国大学即将放长假，就算不关闭其申请通道，到时候！</p>
+
+            <div class="minor">
+                <div>
+                    <span class="tag-sm tag-danger">热门</span>
+                    <span class="tag-sm tag-primary">专题</span>
+                </div>
+                <div>
+                    <span class="article-read">1000</span>
+                    <span >2015-11-11</span>
+                </div>
+            </div>
+        </div>
+        <div class="media-group-right">
+            <div class="thumb">
+                <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/school/2016-01-22/img201601221715490.jpg" alt="">
+            </div>
+        </div>
+    </a>
+    <a class="media-group-item">
+        <div class="media-group-bd">
+            <h4 class="ui-nowrap-multi">高中生为啥能被牛津大学录取？</h4>
+            <p class="intro ui-nowrap-multi">临近圣诞节、春节，英国大学即将放长假，就算不关闭其申请通道，到时候！</p>
+
+            <div class="minor">
+                <div>
+                    <span class="tag-sm tag-danger">热门</span>
+                    <span class="tag-sm tag-primary">专题</span>
+                </div>
+                <div>
+                    <span class="article-read">1000</span>
+                    <span >2015-11-11</span>
+                </div>
+            </div>
+        </div>
+        <div class="media-group-right">
+            <div class="thumb">
+                <img style="width: 101px;height: 66px;" src="http://s2.51offer.com/school/2016-01-22/img201601221107390.jpg" alt="">
+            </div>
+        </div>
+    </a>
+</div>
+                </script>
+            </div>
+
+            <p class="lead" id="list-12">公寓列表项</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="panel">
+                        <h2 class="panel-hd"><span class="panel-title">列表</span></h2>
+                        <div class="panel-middle">
+                            <div class="list-group">
+                                <div class="list-group-item apt-list-info">
+                                    <div class="list-group-bd">
+                                        <h6>PREMIUM RANGE 1 STUDIO </h6>
+                                        <p><span class="font-family-ht">入住：</span>2015/09/12</p>
+                                        <p><span class="font-family-ht">租期：</span>51周</p>
+                                        <h6>Double bed</h6>
+                                    </div>
+                                    <div class="list-group-ft apt-info-ft">
+                                        <div class="apt-price">
+                                            <span class="apt-price-num">￡127</span>/周
+                                        </div>
+                                        <p class="apt-state apt-state-orange">即将租满</p>
+                                        <a class="btn">立即预约顾问</a>
+                                    </div>
+                                </div>
+                                <div class="list-group-item apt-list-info">
+                                    <div class="list-group-bd">
+                                        <h6>PREMIUM RANGE 1 STUDIO </h6>
+                                        <p><span class="font-family-ht">入住：</span>2015/09/12</p>
+                                        <p><span class="font-family-ht">租期：</span>51周</p>
+                                        <h6>Double bed</h6>
+                                    </div>
+                                    <div class="list-group-ft apt-info-ft">
+                                        <div class="apt-price">
+                                            <span class="apt-price-num">￡127</span>/周
+                                        </div>
+                                        <p class="apt-state apt-state-blue">即将租满</p>
+                                        <a class="btn">立即预约顾问</a>
+                                    </div>
+                                </div>
+                                <div class="list-group-item apt-list-info">
+                                    <div class="list-group-bd">
+                                        <h6>PREMIUM RANGE 1 STUDIO </h6>
+                                        <p><span class="font-family-ht">入住：</span>2015/09/12</p>
+                                        <p><span class="font-family-ht">租期：</span>51周</p>
+                                        <h6>Double bed</h6>
+                                    </div>
+                                    <div class="list-group-ft apt-info-ft apt-info-del">
+                                        <div class="apt-price">
+                                            <span class="apt-price-num">￡127</span>/周
+                                        </div>
+                                        <p class="apt-state">已经租满</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="list-code-12" class="html"></code></pre>
+                <script class="pre-code" data-id="list-code-12" type="text/x-handlebars-template">
+<div class="panel">
+    <h2 class="panel-hd"><span class="panel-title">列表</span></h2>
+    <div class="panel-middle">
+        <div class="list-group">
+            <div class="list-group-item apt-list-info">
+                <div class="list-group-bd">
+                    <h6>PREMIUM RANGE 1 STUDIO </h6>
+                    <p><span class="font-family-ht">入住：</span>2015/09/12</p>
+                    <p><span class="font-family-ht">租期：</span>51周</p>
+                    <h6>Double bed</h6>
+                </div>
+                <div class="list-group-ft apt-info-ft">
+                    <div class="apt-price">
+                        <span class="apt-price-num">￡127</span>/周
+                    </div>
+                    <p class="apt-state apt-state-orange">即将租满</p>
+                    <a class="btn">立即预约顾问</a>
+                </div>
+            </div>
+            <div class="list-group-item apt-list-info">
+                <div class="list-group-bd">
+                    <h6>PREMIUM RANGE 1 STUDIO </h6>
+                    <p><span class="font-family-ht">入住：</span>2015/09/12</p>
+                    <p><span class="font-family-ht">租期：</span>51周</p>
+                    <h6>Double bed</h6>
+                </div>
+                <div class="list-group-ft apt-info-ft">
+                    <div class="apt-price">
+                        <span class="apt-price-num">￡127</span>/周
+                    </div>
+                    <p class="apt-state apt-state-blue">即将租满</p>
+                    <a class="btn">立即预约顾问</a>
+                </div>
+            </div>
+            <div class="list-group-item apt-list-info">
+                <div class="list-group-bd">
+                    <h6>PREMIUM RANGE 1 STUDIO </h6>
+                    <p><span class="font-family-ht">入住：</span>2015/09/12</p>
+                    <p><span class="font-family-ht">租期：</span>51周</p>
+                    <h6>Double bed</h6>
+                </div>
+                <div class="list-group-ft apt-info-ft apt-info-del">
+                    <div class="apt-price">
+                        <span class="apt-price-num">￡127</span>/周
+                    </div>
+                    <p class="apt-state">已经租满</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                </script>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="panel" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/panel.html">面板 Panel</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/panel.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <p class="lead" id="panel-1">带普通列表的</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="panel">
+                        <h2 class="panel-hd"><a class="panel-hd-right more">更多</a><span class="panel-title">新闻</span></h2>
+                        <div class="panel-middle">
+                            <div class="list-group list-group-access">
+                                <a class="list-group-item">
+                                    <div class="list-group-bd">cell standard</div>
+                                </a>
+                                <a class="list-group-item">
+                                    <div class="list-group-bd">cell standard</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="panel-code-1" class="html"></code></pre>
+                <script class="pre-code" data-id="panel-code-1" type="text/x-handlebars-template">
+<div class="panel">
+    <h2 class="panel-hd"><a class="panel-hd-right more">更多</a><span class="panel-title">新闻</span></h2>
+    <div class="panel-middle">
+        <div class="list-group list-group-access">
+            <a class="list-group-item">
+                <div class="list-group-bd">cell standard</div>
+            </a>
+            <a class="list-group-item">
+                <div class="list-group-bd">cell standard</div>
+            </a>
+        </div>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="panel-2">带图文列表的</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="panel">
+                        <h2 class="panel-hd"><span class="panel-title">相关学校</span></h2>
+                        <div class="panel-middle">
+                            <div class="media-group">
+                                <div class="media-group-item">
+                                    <div class="media-group-left">
+                                        <div class="thumb">
+                                            <img style="width: 60px; " src="http://s2.51offer.com/school/2015-11-09/img201504151350070.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="media-group-bd">
+                                        <h5 class="ui-nowrap-multi">
+                                            <span class="tag-sm tag-primary">澳大利亚</span>
+                                            <span>London School of Economics and Political Science</span>
+                                        </h5>
+                                        <h5>牛津大学</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="panel-code-2" class="html"></code></pre>
+                <script class="pre-code" data-id="panel-code-2" type="text/x-handlebars-template">
+<div class="panel">
+    <h2 class="panel-hd"><span class="panel-title">相关学校</span></h2>
+    <div class="panel-middle">
+        <div class="media-group">
+            <div class="media-group-item">
+                <div class="media-group-left">
+                    <div class="thumb">
+                        <img style="width: 60px; " src="http://s2.51offer.com/school/2015-11-09/img201504151350070.jpg" alt="">
+                    </div>
+                </div>
+                <div class="media-group-bd">
+                    <h5 class="ui-nowrap-multi">
+                        <span class="tag-sm tag-primary">澳大利亚</span>
+                        <span>London School of Economics and Political Science</span>
+                    </h5>
+                    <h5>牛津大学</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="panel-3">带跳转</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="panel-arrowlink">
+                        <a class="panel-hd"><span class="panel-title">房屋设施</span></a>
+                    </div>
+                </div>
+                <pre><code id="panel-code-3" class="html"></code></pre>
+                <script class="pre-code" data-id="panel-code-3" type="text/x-handlebars-template">
+<div class="panel-arrowlink">
+    <a class="panel-hd"><span class="panel-title">房屋设施</span></a>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="panel-4">带内容带底部</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="panel">
+                        <h2 class="panel-hd"><span class="panel-title">获取留学方案</span></h2>
+                        <div class="panel-middle panel-center">
+                            <p>啦啦啦啦啦啦啦啦啦</p>
+                            <p>啦啦啦啦啦啦啦啦啦</p>
+                        </div>
+                        <div class="panel-ft">
+                            <p class="panel-ft-left">啦啦啦啦啦啦啦啦啦</p>
+                            <p class="panel-ft-right">啦啦啦啦啦啦啦啦啦</p>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="panel-code-4" class="html"></code></pre>
+                <script class="pre-code" data-id="panel-code-4" type="text/x-handlebars-template">
+<div class="panel">
+    <h2 class="panel-hd"><span class="panel-title">获取留学方案</span></h2>
+    <div class="panel-middle panel-center">
+        <p>啦啦啦啦啦啦啦啦啦</p>
+        <p>啦啦啦啦啦啦啦啦啦</p>
+    </div>
+    <div class="panel-ft">
+        <p class="panel-ft-left">啦啦啦啦啦啦啦啦啦</p>
+        <p class="panel-ft-right">啦啦啦啦啦啦啦啦啦</p>
+    </div>
+</div>
+</script>
+            </div>
+
+            <p class="lead" id="panel-5">带小图标、说明</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="panel">
+                        <h2 class="panel-hd"><span class="panel-title">获取留学方案</span></h2>
+                        <div class="panel-middle">
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <div class="list-group-hd"><img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt=""></div>
+                                    <div class="list-group-bd">标题文字</div>
+                                    <div class="list-group-ft">说明文字</div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="list-group-hd"><img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt=""></div>
+                                    <div class="list-group-bd">标题文字</div>
+                                    <div class="list-group-ft">说明文字</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="panel-code-5" class="html"></code></pre>
+                <script class="pre-code" data-id="panel-code-5" type="text/x-handlebars-template">
+<div class="panel">
+    <h2 class="panel-hd"><span class="panel-title">获取留学方案</span></h2>
+    <div class="panel-middle">
+        <div class="list-group">
+            <div class="list-group-item">
+                <div class="list-group-hd"><img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt=""></div>
+                <div class="list-group-bd">标题文字</div>
+                <div class="list-group-ft">说明文字</div>
+            </div>
+            <div class="list-group-item">
+                <div class="list-group-hd"><img style="width: 20px; margin-right: 5px; display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt=""></div>
+                <div class="list-group-bd">标题文字</div>
+                <div class="list-group-ft">说明文字</div>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="slide" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/slide.html">幻灯片 Slide</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/slide.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <p class="lead" id="slide-1">不带标题</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="swiper-container banner1" style="width:100%;margin-top:20px">
+                        <div class="swiper-wrapper" style="">
+                            <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/1.jpg" style="width:100%"/></div>
+                            <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/2.jpg" style="width:100%"/></div>
+                            <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/3.jpg" style="width:100%"/></div>
+                            <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/4.jpg" style="width:100%"/></div>
+                            <div class="swiper-slide"><img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/5.jpg" style="width:100%"/></div>
+                        </div>
+                        <!-- 如果需要导航按钮 -->
+                        <div class="swiper-button-prev" style=""></div>
+                        <div class="swiper-button-next" style=""></div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+                <pre><code id="slide-code-1" class="html javascript"></code></pre>
+                <script class="pre-code" data-id="slide-code-1" type="text/x-handlebars-template">
+<div class="swiper-container banner1">
+    <div class="swiper-wrapper" style="">
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/1.jpg" style="width:100%"/>
+        </div>
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/2.jpg" style="width:100%"/>
+        </div>
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/3.jpg" style="width:100%"/>
+        </div>
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/4.jpg" style="width:100%"/>
+        </div>
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/5.jpg" style="width:100%"/>
+        </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+</div>
+
+var swiper = new Swiper('.banner1', {
+    pagination: '.banner1 .swiper-pagination',
+    slidesPerView: 1,
+    paginationClickable: true,
+    spaceBetween: 30,
+    loop: true
+});
+</script>
+            </div>
+
+            <p class="lead" id="slide-2">带标题不循环</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="swiper-container swiper-title banner2">
+                        <div class="swiper-wrapper" style="">
+                            <div class="swiper-slide">
+                                <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/1.jpg" style="width:100%"/>
+                                <div class="layer"></div>
+                                <div class="text ui-nowrap">新西兰的留学之旅</div>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/2.jpg" style="width:100%"/>
+                                <div class="layer"></div>
+                                <div class="text ui-nowrap">新西兰的留学之旅——让我学会了微笑和感激</div>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/3.jpg" style="width:100%"/>
+                                <div class="layer"></div>
+                                <div class="text ui-nowrap">新西兰的留学之旅</div>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/4.jpg" style="width:100%"/>
+                                <div class="layer"></div>
+                                <div class="text ui-nowrap">新西兰的留学之旅——让我学会了微笑和感激</div>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/5.jpg" style="width:100%"/>
+                                <div class="layer"></div>
+                                <div class="text ui-nowrap">新西兰的留学之旅</div>
+                            </div>
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+                <pre><code id="slide-code-2" class="html javascript"></code></pre>
+                <script class="pre-code" data-id="slide-code-2" type="text/x-handlebars-template">
+<div class="swiper-container swiper-title banner2">
+    <div class="swiper-wrapper" style="">
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/1.jpg" style="width:100%"/>
+            <div class="layer"></div>
+            <div class="text ui-nowrap">新西兰的留学之旅</div>
+        </div>
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/2.jpg" style="width:100%"/>
+            <div class="layer"></div>
+            <div class="text ui-nowrap">新西兰的留学之旅——让我学会了微笑和感激</div>
+        </div>
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/3.jpg" style="width:100%"/>
+            <div class="layer"></div>
+            <div class="text ui-nowrap">新西兰的留学之旅</div>
+        </div>
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/4.jpg" style="width:100%"/>
+            <div class="layer"></div>
+            <div class="text ui-nowrap">新西兰的留学之旅——让我学会了微笑和感激</div>
+        </div>
+        <div class="swiper-slide">
+            <img class="imgs" src="http://s2.51offer.com/event/img/2015-11-23/5.jpg" style="width:100%"/>
+            <div class="layer"></div>
+            <div class="text ui-nowrap">新西兰的留学之旅</div>
+        </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+</div>
+
+var swiper_title = new Swiper('.banner2', {
+    pagination: '.banner2 .swiper-pagination',
+    slidesPerView: 1,
+    paginationClickable: true,
+    spaceBetween: 30
+});
+</script>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="article" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/article.html">文章 Article</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/article.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <div class="article">
+                        <div class="article-hd">
+                            <h1 class="article-title">大学英国选择英国还是美国?</h1>
+                            <small class="minor"><span class="article-read">394</span><span class="article-time">2015-11-22</span></small>
+                        </div>
+                        <div class="article-bd">
+                            <div class="article-intro">
+                                说到世界名校，大家脑子里自然能蹦出来的名就有：哈佛、剑桥、牛津、普林斯顿的确，英美国家都有着不少世界级的名校受着大家广泛地青睐那对于想出国留学的同学和家长们，这里给大家那对于想出国留学的同学
+                            </div>
+                            <div class="article-content">
+                                <p>说到世界名校，大家脑子里自然能蹦出来的名就有：哈佛、剑桥、牛津、普林斯顿…… 的确，英美国家都有着不少世界级的名校受着大家广泛地青睐。那对于想出国留学的同学和家长们，也是一个不错的选择。</p>
+                                <figure><a href="#"><img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img.jpg" /></a>
+                                    <figcaption>英国剑桥大学</figcaption>
+                                </figure>
+                                <h5>一、英语著名大学推荐</h5>
+                                <h6>剑桥大学</h6>
+                                <p>剑桥是位于英格兰东部的一个城市，距伦敦以北50公里。剑桥的公路和铁路都十分健全，到伦敦主要机场也很近。市中心到处都是骑自行车的学生，距剑河不远就是英格兰的乡村，别具另外一番风味。剑桥虽然不大，但充满活力，为到此工作的学习的人们提供广泛的设施和服务。</p>
+                                <blockquote>
+                                    目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。其中，人类学、建筑学、英语、化学、地理、法律及电脑科学在教学品质评估中更荣获优级。几乎所有的系在研究评估中都获得最高分5级。
+                                </blockquote>
+                                <h5>二、英语著名大学推荐</h5>
+                                <h6>伦敦大学</h6>
+                                <p>最好专业：<a href="#">人类学、建筑学、英语、化学、地理、法律及电脑科学</a>。</p>
+                                <p>
+                                    <strong>@人类学</strong><br>
+                                    请找出小学课本朗读《井底之蛙》
+                                </p>
+                                <p>
+                                    <strong>@人类学</strong><br>
+                                    请找出小学课本朗读《井底之蛙》
+                                </p>
+                                <div>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。其中，人类学、建筑学、英语、化学、地理、法律及电脑科学荣获优级。列如：</div>
+                                <ul>
+                                    <li>请找出小学课本朗读《井底之蛙》请找出小学课本朗读《井底之蛙》</li>
+                                    <li>请找出小学课本朗读《井底之蛙》请找出小学课本朗读《井底之蛙》</li>
+                                    <li>请找出小学课本朗读《井底之蛙》请找出小学课本朗读《井底之蛙》</li>
+                                </ul>
+                                <div>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。其中，人类学、建筑学、英语、化学、地理、法律及电脑列如2016：</div>
+                                <div>- 伦敦大学</div>
+                                <div>- 剑桥大学</div>
+                                <div>- 英国皇家学院</div>
+                                <div>- 爱丁堡大学</div>
+                                <figure>
+                                    <img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img_02.png" alt="">
+                                    <figcaption>伦敦夜景</figcaption>
+                                </figure>
+                                <figure>
+                                    <img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img_03.png" alt="">
+                                    <figcaption>伦敦夜景</figcaption>
+                                </figure>
+                                <p>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。</p>
+                                <figure>
+                                    <img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img_04.png" alt="">
+                                </figure>
+                                <figure>
+                                    <img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img_05.png" alt="">
+                                </figure>
+                                <p>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。</p>
+
+                                <div>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。其中，人类学、建筑学、英语、化学、地理、法律及电脑列如2016：</div>
+                                <ol>
+                                    <li>伦敦大学</li>
+                                    <li>剑桥大学</li>
+                                    <li>英国皇家学院</li>
+                                    <li>爱丁堡大学</li>
+                                </ol>
+
+
+                            </div>
+                        </div>
+                        <div class="article-ft">
+                            <p class="minor"><span>编辑: Andy</span><span>来源: 网易新闻</span></p>
+                            <div class="tag-bar" title="标签：">
+                                <a class="tag">成绩单</a>
+                                <a class="tag">文书</a>
+                                <a class="tag">成绩单</a>
+                                <a class="tag">文书</a>
+                                <a class="tag">成绩单</a>
+                                <a class="tag">文书</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pre><code id="article-code" class="html"></code></pre>
+                <script class="pre-code" data-id="article-code" type="text/x-handlebars-template">
+<div class="article">
+    <div class="article-hd">
+        <h1 class="article-title">大学英国选择英国还是美国?</h1>
+        <small class="minor"><span class="article-read">394</span><span class="article-time">2015-11-22</span></small>
+    </div>
+    <div class="article-bd">
+        <div class="article-intro">
+            说到世界名校，大家脑子里自然能蹦出来的名就有：哈佛、剑桥、牛津、普林斯顿的确，英美国家都有着不少世界级的名校受着大家广泛地青睐那对于想出国留学的同学和家长们，这里给大家那对于想出国留学的同学
+        </div>
+        <div class="article-content">
+            <p>说到世界名校，大家脑子里自然能蹦出来的名就有：哈佛、剑桥、牛津、普林斯顿…… 的确，英美国家都有着不少世界级的名校受着大家广泛地青睐。那对于想出国留学的同学和家长们，也是一个不错的选择。</p>
+            <figure><a href="#"><img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img.jpg" /></a>
+                <figcaption>英国剑桥大学</figcaption>
+            </figure>
+            <h5>一、英语著名大学推荐</h5>
+            <h6>剑桥大学</h6>
+            <p>剑桥是位于英格兰东部的一个城市，距伦敦以北50公里。剑桥的公路和铁路都十分健全，到伦敦主要机场也很近。市中心到处都是骑自行车的学生，距剑河不远就是英格兰的乡村，别具另外一番风味。剑桥虽然不大，但充满活力，为到此工作的学习的人们提供广泛的设施和服务。</p>
+            <blockquote>
+                目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。其中，人类学、建筑学、英语、化学、地理、法律及电脑科学在教学品质评估中更荣获优级。几乎所有的系在研究评估中都获得最高分5级。
+            </blockquote>
+            <h5>二、英语著名大学推荐</h5>
+            <h6>伦敦大学</h6>
+            <p>最好专业：<a href="#">人类学、建筑学、英语、化学、地理、法律及电脑科学</a>。</p>
+            <p>
+                <strong>@人类学</strong><br>
+                请找出小学课本朗读《井底之蛙》
+            </p>
+            <p>
+                <strong>@人类学</strong><br>
+                请找出小学课本朗读《井底之蛙》
+            </p>
+            <div>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。其中，人类学、建筑学、英语、化学、地理、法律及电脑科学荣获优级。列如：</div>
+            <ul>
+                <li>请找出小学课本朗读《井底之蛙》请找出小学课本朗读《井底之蛙》</li>
+                <li>请找出小学课本朗读《井底之蛙》请找出小学课本朗读《井底之蛙》</li>
+                <li>请找出小学课本朗读《井底之蛙》请找出小学课本朗读《井底之蛙》</li>
+            </ul>
+            <div>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。其中，人类学、建筑学、英语、化学、地理、法律及电脑列如2016：</div>
+            <div>- 伦敦大学</div>
+            <div>- 剑桥大学</div>
+            <div>- 英国皇家学院</div>
+            <div>- 爱丁堡大学</div>
+            <figure>
+                <img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img_02.png" alt="">
+                <figcaption>伦敦夜景</figcaption>
+            </figure>
+            <figure>
+                <img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img_03.png" alt="">
+                <figcaption>伦敦夜景</figcaption>
+            </figure>
+            <p>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。</p>
+            <figure>
+                <img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img_04.png" alt="">
+            </figure>
+            <figure>
+                <img src="http://s2.51offer.com/51offer/51offer-ui/img/2016-01-28/article-img_05.png" alt="">
+            </figure>
+            <p>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。</p>
+
+            <div>剑桥大学以其高素质的教学和研究水准而闻名。目前学生人数约为18,000人，其中研究生6,000人，海外留学生占13%。其中，人类学、建筑学、英语、化学、地理、法律及电脑列如2016：</div>
+            <ol>
+                <li>伦敦大学</li>
+                <li>剑桥大学</li>
+                <li>英国皇家学院</li>
+                <li>爱丁堡大学</li>
+            </ol>
+        </div>
+    </div>
+    <div class="article-ft">
+        <p class="minor"><span>编辑: Andy</span><span>来源: 网易新闻</span></p>
+        <div class="tag-bar" title="标签：">
+            <a class="tag">成绩单</a>
+            <a class="tag">文书</a>
+            <a class="tag">成绩单</a>
+            <a class="tag">文书</a>
+            <a class="tag">成绩单</a>
+            <a class="tag">文书</a>
+        </div>
+    </div>
+</div>
+</script>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="tag" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/tag.html">标签 Tag</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/tag.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <p class="lead" id="tag-1">默认 tag</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <a class="tag">默认</a>
+                    <a class="tag tag-primary">全部</a>
+                    <a class="tag tag-danger">学费不贵</a>
+                    <a class="tag tag-orange">学费不贵</a>
+                </div>
+                <pre><code id="tag-code-1" class="html"></code></pre>
+                <script class="pre-code" data-id="tag-code-1" type="text/x-handlebars-template">
+<a class="tag">默认</a>
+<a class="tag tag-primary">全部</a>
+<a class="tag tag-danger">学费不贵</a>
+<a class="tag tag-orange">学费不贵</a>
+                </script>
+            </div>
+
+            <p class="lead" id="tag-2">大尺寸 tag</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <a class="tag-lg">默认</a>
+                    <a class="tag-lg tag-primary">雅思成绩</a>
+                    <a class="tag-lg tag-danger">托福成绩</a>
+                    <a class="tag-lg tag-orange">托福成绩</a>
+                </div>
+                <pre><code id="tag-code-2" class="html"></code></pre>
+                <script class="pre-code" data-id="tag-code-2" type="text/x-handlebars-template">
+<a class="tag-lg">默认</a>
+<a class="tag-lg tag-primary">雅思成绩</a>
+<a class="tag-lg tag-danger">托福成绩</a>
+<a class="tag-lg tag-orange">托福成绩</a>
+                </script>
+            </div>
+
+            <p class="lead" id="tag-3">小尺寸 tag</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <a class="tag-sm">默认</a>
+                    <a class="tag-sm tag-primary">专题</a>
+                    <a class="tag-sm tag-danger">热门</a>
+                    <a class="tag-sm tag-orange">热门</a>
+                </div>
+                <pre><code id="tag-code-3" class="html"></code></pre>
+                <script class="pre-code" data-id="tag-code-3" type="text/x-handlebars-template">
+<a class="tag-sm">默认</a>
+<a class="tag-sm tag-primary">专题</a>
+<a class="tag-sm tag-danger">热门</a>
+<a class="tag-sm tag-orange">热门</a>
+                </script>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="part" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/part.html">部件</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/part.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+
+            <p class="lead" id="part-1">头部1</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <header class="global-header">
+                        <a href="javascript:history.go(-1)" class="back"><i class="icon icon-back"></i>返回</a>
+                        <h1>Button UI</h1>
+                        <nav class="aside-menu">
+                            <a href="javascript:void(0);" class="personal-center"></a>
+                            <a class="icon-menu" id="icon_menu"></a>
+                        </nav>
+                    </header>
+                </div>
+                <pre><code id="part-code-1" class="html"></code></pre>
+                <script class="pre-code" data-id="part-code-1" type="text/x-handlebars-template">
+<header class="global-header">
+    <a href="javascript:history.go(-1)" class="back"><i class="icon icon-back"></i>返回</a>
+    <h1>Button UI</h1>
+    <nav class="aside-menu">
+        <a href="javascript:void(0);" class="personal-center"></a>
+        <a class="icon-menu" id="icon_menu"></a>
+    </nav>
+</header>
+                </script>
+            </div>
+            <p class="lead" id="part-2">头部2</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <header class="global-header global-header-blue">
+                        <i class="icon logo-home"></i>
+                        <nav class="aside-menu">
+                            <a href="javascript:void(0);" class="personal-home"></a>
+                            <a class="icon-menu" id="icon_menu"></a>
+                        </nav>
+                    </header>
+                </div>
+                <pre><code id="part-code-2" class="html"></code></pre>
+                <script class="pre-code" data-id="part-code-2" type="text/x-handlebars-template">
+<header class="global-header global-header-blue">
+    <i class="icon logo-home"></i>
+    <nav class="aside-menu">
+        <a href="javascript:void(0);" class="personal-home"></a>
+        <a class="icon-menu" id="icon_menu"></a>
+    </nav>
+</header>
+                </script>
+            </div>
+            <p class="lead" id="part-3">头部3（带分享按钮）</p>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <header class="global-header">
+                        <a href="javascript:history.go(-1)" class="back"><i class="icon icon-back"></i>返回</a>
+                        <h1>Button UI</h1>
+                        <nav class="aside-menu">
+                            <a class="icon-share"></a>
+                            <a class="icon-menu" id="icon_menu"></a>
+                        </nav>
+                    </header>
+                </div>
+                <pre><code id="part-code-3" class="html"></code></pre>
+                <script class="pre-code" data-id="part-code-3" type="text/x-handlebars-template">
+<header class="global-header">
+    <a href="javascript:history.go(-1)" class="back"><i class="icon icon-back"></i>返回</a>
+    <h1>Button UI</h1>
+    <nav class="aside-menu">
+        <a class="icon-share"></a>
+        <a class="icon-menu" id="icon_menu"></a>
+    </nav>
+</header>
+                </script>
+            </div>
+        </div>
+
+        <div class="bs-docs-section">
+            <h1 id="iconfont" class="page-header">
+                <a href="http://orzhtml.github.io/mobile-ui/icon-font.html">字体图标 IconFont</a>
+                <a class="doc-demo-link" href="http://orzhtml.github.io/mobile-ui/icon-font.html" title="点击查看demo" target="_blank"><span class="icon-qr doc-qrcode"></span></a>
+            </h1>
+            <div class="module-demo">
+                <div class="module-docs" title="Example">
+                    <ul class="bs-icon-font clearfix">
+                        <li>
+                            <span class="icon icon-arrows-right"></span>
+                            <span class="name">icon-arrows-right</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-arrows-left"></span>
+                            <span class="name">icon-arrows-left</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-arrows-up"></span>
+                            <span class="name">icon-arrows-up</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-arrows-down"></span>
+                            <span class="name">icon-arrows-down</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-close"></span>
+                            <span class="name">icon-close</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-close-circled"></span>
+                            <span class="name">icon-close-circled</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-eye"></span>
+                            <span class="name">icon-eye</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-checkbox"></span>
+                            <span class="name">icon-checkbox</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-checkbox-checked"></span>
+                            <span class="name">icon-checkbox-checked</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-search"></span>
+                            <span class="name">icon-search</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-arrows-right-sm"></span>
+                            <span class="name">icon-arrows-right-sm</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-arrows-left-sm"></span>
+                            <span class="name">icon-arrows-left-sm</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-arrows-up-sm"></span>
+                            <span class="name">icon-arrows-up-sm</span>
+                        </li>
+                        <li>
+                            <span class="icon icon-arrows-down-sm"></span>
+                            <span class="name">icon-arrows-down-sm</span>
+                        </li>
+                    </ul>
+                </div>
+                <pre><code id="iconfont-code" class="html"></code></pre>
+                <script class="pre-code" data-id="iconfont-code" type="text/x-handlebars-template">
+
+                </script>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="./js/jquery.1.10.2.js"></script>
+<script src="./js/highlight.js"></script>
+<script src="./js/affix.js"></script>
+<script src="./js/scrollspy.js"></script>
+
+<script src="./js/basic.js"></script>
+<script src="./js/dialog.js"></script>
+<script src="./js/swiper.jquery.js"></script>
+<script src="./js/jquery.qrcode.js"></script>
+
+<script src="./index.js"></script>
 </body>
 </html>
