@@ -20,6 +20,13 @@ module.exports = function (grunt) {
                 cwd: 'src/js/',
                 src: '*.js',
                 dest: 'dist/js/'
+            },
+            img: {
+                expand: true,
+                flatten: true,
+                cwd: 'src/images/',
+                src: '*.*',
+                dest: 'dist/images/'
             }
         },
         watch: {
